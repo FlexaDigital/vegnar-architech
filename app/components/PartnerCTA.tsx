@@ -2,10 +2,15 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useSection } from '../context/SectionContext';
 
 export default function PartnerCTA() {
+  const { currentSection, totalSections } = useSection();
+  const isLastSection = currentSection === totalSections - 1;
+  const showFooter = currentSection === totalSections;
+
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative h-screen flex items-center">
       {/* Background with Pattern */}
       <div className="absolute inset-0 bg-[#2B4257]">
         <div className="absolute inset-0" style={{
@@ -15,7 +20,14 @@ export default function PartnerCTA() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div 
+        className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        animate={{
+          paddingBottom: showFooter ? "24rem" : "0",
+          y: showFooter ? "-12rem" : "0"
+        }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <motion.div
@@ -23,15 +35,17 @@ export default function PartnerCTA() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="space-y-8"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
               Become Our Partner in
               <span className="block">Architectural Excellence</span>
             </h2>
-            <p className="text-xl text-white/80 mb-8 leading-relaxed">
+            <p className="text-xl text-white/80 leading-relaxed">
               Join our network of trusted partners and be part of transformative architectural solutions that shape the future of spaces.
             </p>
-            <div className="flex flex-wrap gap-6 items-center">
+            
+            <div className="space-y-6">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -62,8 +76,8 @@ export default function PartnerCTA() {
               </div>
             </div>
 
-            {/* Benefits */}
-            <div className="grid grid-cols-2 gap-6 mt-12">
+            {/* Benefits Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 {
                   title: 'Global Network',
@@ -88,7 +102,7 @@ export default function PartnerCTA() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white/10 backdrop-blur-sm rounded-xl p-6"
+                  className="bg-white/10 backdrop-blur-sm rounded-xl p-4"
                 >
                   <h3 className="text-white font-semibold mb-2">{benefit.title}</h3>
                   <p className="text-white/70 text-sm">{benefit.description}</p>
@@ -103,7 +117,7 @@ export default function PartnerCTA() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative h-[600px] rounded-2xl overflow-hidden"
+            className="relative h-[500px] rounded-2xl overflow-hidden"
           >
             <Image
               src="/images/partner-showcase.jpg"
@@ -114,7 +128,7 @@ export default function PartnerCTA() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#2B4257] to-transparent opacity-60" />
             <div className="absolute bottom-0 left-0 right-0 p-8">
               <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
-                <div className="flex items-center gap-4 mb-4">
+                <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
                     <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -129,7 +143,7 @@ export default function PartnerCTA() {
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 } 
