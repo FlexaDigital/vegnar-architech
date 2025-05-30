@@ -1,8 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { useSection } from '../context/SectionContext';
 
 const footerLinks = {
   products: [
@@ -65,127 +65,153 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const { currentSection, setCurrentSection } = useSection();
+  const totalSections = 5; // Update this based on your total number of sections
+
+  const handleGoToTop = () => {
+    setCurrentSection(0);
+  };
+
   return (
-    <footer className="bg-gray-900 text-white">
-      {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="block mb-6">
-              <Image
-                src="/vegnar-architectural-logo.png"
-                alt="Vegnar Architectural"
-                width={180}
-                height={48}
-                className="brightness-0 invert"
-              />
-            </Link>
-            <p className="text-gray-400 mb-8 max-w-md">
-              Leading provider of premium architectural hardware solutions, transforming spaces with innovation and excellence since 2003.
-            </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((item) => (
-                <motion.a
-                  key={item.name}
-                  href={item.href}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <span className="sr-only">{item.name}</span>
-                  {item.icon}
-                </motion.a>
-              ))}
+    <AnimatePresence>
+      {currentSection === totalSections - 1 && (
+        <motion.footer
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          exit={{ y: "100%" }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="fixed bottom-0 left-0 right-0 bg-gray-900 text-white z-40"
+        >
+          {/* Go to Top Button */}
+          <motion.button
+            onClick={handleGoToTop}
+            className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-[#2B4257] text-white px-6 py-3 rounded-t-lg shadow-lg hover:bg-[#1a2834] transition-colors duration-300 flex items-center gap-2"
+            whileHover={{ y: -2 }}
+            whileTap={{ y: 0 }}
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+            Back to Top
+          </motion.button>
+
+          {/* Main Footer */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+              {/* Brand Column */}
+              <div className="lg:col-span-2">
+                <p className="text-gray-400 mb-8 max-w-md">
+                  Leading provider of premium architectural hardware solutions, transforming spaces with innovation and excellence since 2003.
+                </p>
+                <div className="flex space-x-4">
+                  {socialLinks.map((item) => (
+                    <motion.a
+                      key={item.name}
+                      href={item.href}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      <span className="sr-only">{item.name}</span>
+                      {item.icon}
+                    </motion.a>
+                  ))}
+                </div>
+              </div>
+
+              {/* Links Columns */}
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:col-span-3">
+                {/* Products */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-4">Products</h3>
+                  <ul className="space-y-3">
+                    {footerLinks.products.map((link) => (
+                      <li key={link.name}>
+                        <Link
+                          href={link.href}
+                          className="text-gray-400 hover:text-white transition-colors"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Company */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-4">Company</h3>
+                  <ul className="space-y-3">
+                    {footerLinks.company.map((link) => (
+                      <li key={link.name}>
+                        <Link
+                          href={link.href}
+                          className="text-gray-400 hover:text-white transition-colors"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Support */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-4">Support</h3>
+                  <ul className="space-y-3">
+                    {footerLinks.support.map((link) => (
+                      <li key={link.name}>
+                        <Link
+                          href={link.href}
+                          className="text-gray-400 hover:text-white transition-colors"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Links Columns */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:col-span-3 gap-8">
-            <div>
-              <h3 className="text-white font-semibold mb-4">Products</h3>
-              <ul className="space-y-3">
-                {footerLinks.products.map((link) => (
-                  <li key={link.name}>
+          {/* Bottom Footer */}
+          <div className="border-t border-gray-800">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+              <div className="flex flex-col md:flex-row justify-between items-center">
+                <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+                  <p className="text-gray-400 text-sm">
+                    © {new Date().getFullYear()} Vegnar Architectural. All rights reserved.
+                  </p>
+                  <span className="hidden md:inline text-gray-600">•</span>
+                  <p className="text-gray-400 text-sm">
+                    Developed by{' '}
+                    <a
+                      href="https://flexadigital.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      flexadigital
+                    </a>
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-6 mt-4 md:mt-0">
+                  {footerLinks.legal.map((link) => (
                     <Link
+                      key={link.name}
                       href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors"
+                      className="text-gray-400 hover:text-white text-sm transition-colors"
                     >
                       {link.name}
                     </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-white font-semibold mb-4">Company</h3>
-              <ul className="space-y-3">
-                {footerLinks.company.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-white font-semibold mb-4">Support</h3>
-              <ul className="space-y-3">
-                {footerLinks.support.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
-              <p className="text-gray-400 text-sm">
-                © {new Date().getFullYear()} Vegnar Architectural. All rights reserved.
-              </p>
-              <span className="hidden md:inline text-gray-600">•</span>
-              <p className="text-gray-400 text-sm">
-                Developed by{' '}
-                <a
-                  href="https://flexadigital.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  flexadigital
-                </a>
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-6 mt-4 md:mt-0">
-              {footerLinks.legal.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-gray-400 hover:text-white text-sm transition-colors"
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+        </motion.footer>
+      )}
+    </AnimatePresence>
   );
 } 

@@ -1,22 +1,35 @@
+'use client';
+
 import Hero from './components/Hero';
-import WhyChooseUs from './components/WhyChooseUs';
-import AboutSection from './components/AboutSection';
-import ProjectCategories from './components/ProjectCategories';
-import ProductCollections from './components/ProductCollections';
 import ProductCategories from './components/ProductCategories';
-import ProductGallery from './components/ProductGallery';
+import AboutSection from './components/AboutSection';
+import WhyChooseUs from './components/WhyChooseUs';
+import PartnerCTA from './components/PartnerCTA';
+import FullscreenLayout from './components/FullscreenLayout';
+
+const sections = [
+  {
+    id: 'hero',
+    component: <Hero />
+  },
+  {
+    id: 'products',
+    component: <ProductCategories />
+  },
+  {
+    id: 'about',
+    component: <AboutSection />
+  },
+  {
+    id: 'why-choose-us',
+    component: <WhyChooseUs />
+  },
+  {
+    id: 'partner',
+    component: <PartnerCTA />
+  }
+];
 
 export default function Home() {
-  return (
-    <main>
-      <Hero />
-    
-      <AboutSection />
-      <ProjectCategories />
-      <ProductCollections />
-      <ProductCategories />
-      <WhyChooseUs />
-      <ProductGallery />
-    </main>
-  );
+  return <FullscreenLayout sections={sections} />;
 }
