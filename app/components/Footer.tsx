@@ -65,8 +65,8 @@ const socialLinks = [
 ];
 
 export default function Footer() {
-  const { currentSection, setCurrentSection } = useSection();
-  const totalSections = 5; // Update this based on your total number of sections
+  const { currentSection, totalSections, setCurrentSection } = useSection();
+  const isVisible = currentSection === totalSections;
 
   const handleGoToTop = () => {
     setCurrentSection(0);
@@ -74,7 +74,7 @@ export default function Footer() {
 
   return (
     <AnimatePresence>
-      {currentSection === totalSections - 1 && (
+      {isVisible && (
         <motion.footer
           initial={{ y: "100%" }}
           animate={{ y: 0 }}
@@ -201,7 +201,7 @@ export default function Footer() {
                     <Link
                       key={link.name}
                       href={link.href}
-                      className="text-gray-400 hover:text-white text-sm transition-colors"
+                      className="text-gray-400 hover:text-white transition-colors text-sm"
                     >
                       {link.name}
                     </Link>

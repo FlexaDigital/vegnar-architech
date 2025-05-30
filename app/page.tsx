@@ -6,6 +6,7 @@ import AboutSection from './components/AboutSection';
 import WhyChooseUs from './components/WhyChooseUs';
 import PartnerCTA from './components/PartnerCTA';
 import FullscreenLayout from './components/FullscreenLayout';
+import ProductGallery from './components/ProductGallery';
 
 const sections = [
   {
@@ -13,8 +14,16 @@ const sections = [
     component: <Hero />
   },
   {
+    id: 'about',
+    component: <AboutSection />
+  },
+  {
     id: 'products',
     component: <ProductCategories />
+  },
+  {
+    id: 'gallery',
+    component: <ProductGallery />
   },
   {
     id: 'about',

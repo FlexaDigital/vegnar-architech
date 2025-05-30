@@ -32,8 +32,10 @@ export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
 
   useEffect(() => {
     // Reset footer visibility when changing sections
-    setShowFooter(false);
-  }, [currentSectionIndex]);
+    if (currentSectionIndex !== sections.length - 1) {
+      setShowFooter(false);
+    }
+  }, [currentSectionIndex, sections.length]);
 
   useEffect(() => {
     // Disable body scroll
@@ -147,19 +149,48 @@ export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
     }
   };
 
+  const handleGoToTop = () => {
+    if (!isTransitioning && currentSectionIndex !== 0) {
+      setCurrentSectionIndex(0);
+    }
+  };
+
   return (
     <div className="fixed inset-0 overflow-hidden bg-white">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSectionIndex}
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ 
+            opacity: 1, 
+            y: showFooter && currentSectionIndex === sections.length - 1 ? -200 : 0 
+          }}
           exit={{ opacity: 0, y: -50 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
           className="w-full h-full"
         >
           {sections[currentSectionIndex].component}
         </motion.div>
+      </AnimatePresence>
+
+      {/* Back to Top Button */}
+      <AnimatePresence>
+        {currentSectionIndex > 0 && !showFooter && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            onClick={handleGoToTop}
+            className="fixed top-8 right-8 bg-[#2B4257] text-white px-4 py-2 rounded-lg shadow-lg hover:bg-[#1a2834] transition-all duration-300 flex items-center gap-2 z-50"
+            whileHover={{ y: -2, scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+            <span className="font-medium">Top</span>
+          </motion.button>
+        )}
       </AnimatePresence>
 
       {/* Navigation Indicators */}
@@ -173,7 +204,7 @@ export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
               }
             }}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSectionIndex
+              index === currentSectionIndex && !showFooter
                 ? 'bg-[#2B4257] scale-125'
                 : 'bg-gray-300 hover:bg-gray-400'
             }`}
