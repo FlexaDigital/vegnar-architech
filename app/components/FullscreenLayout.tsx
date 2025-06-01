@@ -52,18 +52,16 @@ export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
     
     if (isLastSection) {
       if (e.deltaY > 0 && !showFooter) {
-        // Scrolling down on last section, show footer
         setShowFooter(true);
         return;
       } else if (e.deltaY < 0 && showFooter) {
-        // Scrolling up on last section with footer shown, hide footer
         setShowFooter(false);
         return;
       }
     }
 
     const direction = e.deltaY > 0 ? 1 : -1;
-    if (!showFooter) { // Only change section if footer is not shown
+    if (!showFooter) {
       changeSection(direction);
     }
   };
@@ -103,7 +101,7 @@ export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
     const direction = touchStart > touchEnd ? 1 : -1;
     const isLastSection = currentSectionIndex === sections.length - 1;
     
-    // Only trigger if the swipe is significant enough
+    // Only trigger if the swipe is significant enough (50px)
     if (Math.abs(touchStart - touchEnd) > 50) {
       if (isLastSection) {
         if (direction > 0 && !showFooter) {
@@ -174,24 +172,22 @@ export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
       </AnimatePresence>
 
       {/* Back to Top Button */}
-      <AnimatePresence>
-        {currentSectionIndex > 0 && !showFooter && (
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            onClick={handleGoToTop}
-            className="fixed top-8 right-8 bg-[#2B4257] text-white px-4 py-2 rounded-lg shadow-lg hover:bg-[#1a2834] transition-all duration-300 flex items-center gap-2 z-50"
-            whileHover={{ y: -2, scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-            </svg>
-            <span className="font-medium">Top</span>
-          </motion.button>
-        )}
-      </AnimatePresence>
+      {currentSectionIndex > 0 && !showFooter && (
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          onClick={handleGoToTop}
+          className="fixed top-8 right-8 bg-[#2B4257] text-white px-4 py-2 rounded-lg shadow-lg hover:bg-[#1a2834] transition-all duration-300 flex items-center gap-2 z-50"
+          whileHover={{ y: -2, scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+          <span className="font-medium">Top</span>
+        </motion.button>
+      )}
 
       {/* Navigation Indicators */}
       <div className="fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-2">

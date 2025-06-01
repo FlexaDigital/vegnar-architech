@@ -28,8 +28,8 @@ export default function PartnerCTA() {
         }}
         transition={{ duration: 0.5 }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left Column - Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -45,7 +45,7 @@ export default function PartnerCTA() {
               Join our network of trusted partners and be part of transformative architectural solutions that shape the future of spaces.
             </p>
             
-            <div className="space-y-6">
+            <div className="space-y-8">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -75,8 +75,16 @@ export default function PartnerCTA() {
                 </p>
               </div>
             </div>
+          </motion.div>
 
-            {/* Benefits Grid */}
+          {/* Right Column - Benefits Grid */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 {
@@ -102,45 +110,34 @@ export default function PartnerCTA() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white/10 backdrop-blur-sm rounded-xl p-4"
+                  className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300"
                 >
-                  <h3 className="text-white font-semibold mb-2">{benefit.title}</h3>
-                  <p className="text-white/70 text-sm">{benefit.description}</p>
+                  <h3 className="text-white font-semibold text-lg mb-2">{benefit.title}</h3>
+                  <p className="text-white/70 text-sm leading-relaxed">{benefit.description}</p>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
 
-          {/* Image/Illustration */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative h-[500px] rounded-2xl overflow-hidden"
-          >
-            <Image
-              src="/images/partner-showcase.jpg"
-              alt="Partner Showcase"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#2B4257] to-transparent opacity-60" />
-            <div className="absolute bottom-0 left-0 right-0 p-8">
-              <div className="bg-white/10 backdrop-blur-md rounded-xl p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold">Fast-Track Partnership</h4>
-                    <p className="text-white/70 text-sm">Get started in less than 48 hours</p>
-                  </div>
+            {/* Fast-Track Partnership Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-4 bg-white/10 backdrop-blur-md rounded-xl p-6 hover:bg-white/20 transition-all duration-300"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold text-lg">Fast-Track Partnership</h4>
+                  <p className="text-white/70 text-sm">Get started in less than 48 hours</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>
