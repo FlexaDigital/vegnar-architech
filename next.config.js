@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  images: {
+    domains: ['cms-arch.flexadigital.com'],
+  },
 };
 
 module.exports = nextConfig; 

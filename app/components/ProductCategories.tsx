@@ -4,107 +4,93 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const categories = [
+interface Category {
+  id: number;
+  name: string;
+  description: string;
+  slug: string;
+  parent: number;
+}
+
+interface ProductCategoriesProps {
+  categories?: Category[];
+}
+
+// Default categories if none are provided
+const defaultCategories = [
   {
     id: 1,
     name: 'Door Hardware',
-    description: 'Premium handles, locks, and door control systems',
-    image: '/images/categories/door-hardware.jpg',
-    href: '/products/door-hardware',
-    color: 'bg-[#2B4257]'
+    description: 'Premium door handles, locks, and accessories for residential and commercial use.',
+    slug: 'door-hardware',
+    parent: 0
   },
   {
     id: 2,
     name: 'Glass Fittings',
-    description: 'Sophisticated glass door and partition solutions',
-    image: '/images/categories/glass-fittings.jpg',
-    href: '/products/glass-fittings',
-    color: 'bg-[#1a2834]'
+    description: 'High-quality glass hardware solutions for modern architectural designs.',
+    slug: 'glass-fittings',
+    parent: 0
   },
   {
     id: 3,
     name: 'Railing Systems',
-    description: 'Modern balustrades and handrail solutions',
-    image: '/images/categories/railing-systems.jpg',
-    href: '/products/railing-systems',
-    color: 'bg-[#2B4257]'
-  },
-  {
-    id: 4,
-    name: 'Security Solutions',
-    description: 'Advanced access control and security hardware',
-    image: '/images/categories/security-solutions.jpg',
-    href: '/products/security',
-    color: 'bg-[#1a2834]'
+    description: 'Elegant and durable railing solutions for stairs, balconies, and more.',
+    slug: 'railing-systems',
+    parent: 0
   }
 ];
 
-export default function ProductCategories() {
+export default function ProductCategories({ categories = defaultCategories }: ProductCategoriesProps) {
   return (
-    <section className="relative h-screen flex items-center bg-white">
-      <div className="absolute inset-0 bg-gray-50">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(0,0,0,0.05) 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }} />
-      </div>
+    <div className="min-h-screen w-full bg-white flex items-center justify-center py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 text-center"
+        >
+          Our Product Categories
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-12"
+        >
+          Explore our comprehensive range of architectural solutions
+        </motion.p>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
-          >
-            Product Categories
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
-          >
-            Explore our comprehensive range of architectural hardware solutions
-          </motion.p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Categories Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category, index) => (
             <motion.div
-              key={category.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              key={category.slug}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative group"
             >
-              <Link href={category.href} className="block group">
-                <div className="relative overflow-hidden rounded-2xl shadow-lg">
-                  {/* Image Container */}
-                  <div className="relative h-64 w-full overflow-hidden">
-                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors z-10" />
-                    <Image
-                      src={category.image}
-                      alt={category.name}
-                      fill
-                      className="object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    />
+              <Link href={`/products/${category.slug}`}>
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden group-hover:shadow-xl transition-shadow duration-300">
+                  <div className="relative h-48">
+                    <div className="absolute inset-0 bg-[#2B4257] opacity-10 group-hover:opacity-20 transition-opacity duration-300" />
                   </div>
-
-                  {/* Content Overlay */}
-                  <div className="absolute inset-0 z-20 p-6 flex flex-col justify-end">
-                    <h3 className="text-2xl font-bold text-white mb-2">
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#2B4257] transition-colors duration-300">
                       {category.name}
                     </h3>
-                    <p className="text-white/90">
+                    <p className="text-gray-600 mb-4 line-clamp-2">
                       {category.description}
                     </p>
-                    <div className="mt-4 flex items-center text-white">
-                      <span className="text-sm font-medium">Explore Products</span>
+                    <div className="flex items-center text-[#2B4257] font-medium">
+                      <span className="mr-2 group-hover:mr-4 transition-all duration-300">
+                        View Products
+                      </span>
                       <svg
-                        className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
+                        className="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -124,6 +110,6 @@ export default function ProductCategories() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 } 
