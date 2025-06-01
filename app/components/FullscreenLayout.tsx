@@ -16,7 +16,8 @@ interface FullscreenLayoutProps {
 export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [touchStart, setTouchStart] = useState(0);
+  const [touchStart, setTouchStart] = useState({ x: 0, y: 0 });
+  const [touchEnd, setTouchEnd] = useState({ x: 0, y: 0 });
   const [showFooter, setShowFooter] = useState(false);
   const { setCurrentSection, setTotalSections } = useSection();
 
@@ -47,6 +48,7 @@ export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
 
   const handleScroll = (e: WheelEvent) => {
     if (isTransitioning) return;
+    e.preventDefault();
 
     const isLastSection = currentSectionIndex === sections.length - 1;
     
@@ -91,30 +93,49 @@ export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
   };
 
   const handleTouchStart = (e: TouchEvent) => {
-    setTouchStart(e.touches[0].clientY);
+    setTouchStart({
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY
+    });
+    setTouchEnd({
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY
+    });
   };
 
-  const handleTouchEnd = (e: TouchEvent) => {
+  const handleTouchMove = (e: TouchEvent) => {
+    setTouchEnd({
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY
+    });
+  };
+
+  const handleTouchEnd = () => {
     if (isTransitioning) return;
 
-    const touchEnd = e.changedTouches[0].clientY;
-    const direction = touchStart > touchEnd ? 1 : -1;
-    const isLastSection = currentSectionIndex === sections.length - 1;
-    
-    // Only trigger if the swipe is significant enough (50px)
-    if (Math.abs(touchStart - touchEnd) > 50) {
-      if (isLastSection) {
-        if (direction > 0 && !showFooter) {
-          setShowFooter(true);
-          return;
-        } else if (direction < 0 && showFooter) {
-          setShowFooter(false);
-          return;
-        }
-      }
+    const diffX = touchStart.x - touchEnd.x;
+    const diffY = touchStart.y - touchEnd.y;
 
-      if (!showFooter) {
-        changeSection(direction);
+    // Check if the swipe was more vertical than horizontal
+    if (Math.abs(diffY) > Math.abs(diffX)) {
+      const minSwipeDistance = 50;
+      const direction = diffY > 0 ? 1 : -1;
+      const isLastSection = currentSectionIndex === sections.length - 1;
+
+      if (Math.abs(diffY) > minSwipeDistance) {
+        if (isLastSection) {
+          if (direction > 0 && !showFooter) {
+            setShowFooter(true);
+            return;
+          } else if (direction < 0 && showFooter) {
+            setShowFooter(false);
+            return;
+          }
+        }
+
+        if (!showFooter) {
+          changeSection(direction);
+        }
       }
     }
   };
@@ -122,16 +143,18 @@ export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
   useEffect(() => {
     window.addEventListener('wheel', handleScroll, { passive: false });
     window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchstart', handleTouchStart, { passive: false });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
     window.addEventListener('touchend', handleTouchEnd);
 
     return () => {
       window.removeEventListener('wheel', handleScroll);
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [currentSectionIndex, isTransitioning, showFooter]);
+  }, [currentSectionIndex, isTransitioning, showFooter, touchStart, touchEnd]);
 
   const changeSection = (direction: number) => {
     const nextIndex = currentSectionIndex + direction;
@@ -154,7 +177,7 @@ export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
   };
 
   return (
-    <div className="fixed inset-0 overflow-hidden bg-white">
+    <div className="fixed inset-0 overflow-hidden bg-white touch-none">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSectionIndex}
@@ -165,9 +188,11 @@ export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
           }}
           exit={{ opacity: 0, y: -50 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="w-full h-full"
+          className="w-full h-full overflow-hidden"
         >
-          {sections[currentSectionIndex].component}
+          <div className="w-full h-full overflow-y-auto">
+            {sections[currentSectionIndex].component}
+          </div>
         </motion.div>
       </AnimatePresence>
 
@@ -178,11 +203,11 @@ export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           onClick={handleGoToTop}
-          className="fixed top-8 right-8 bg-[#2B4257] text-white px-4 py-2 rounded-lg shadow-lg hover:bg-[#1a2834] transition-all duration-300 flex items-center gap-2 z-50"
+          className="fixed top-4 right-4 sm:top-8 sm:right-8 bg-[#2B4257] text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow-lg hover:bg-[#1a2834] transition-all duration-300 flex items-center gap-2 z-50 text-sm sm:text-base"
           whileHover={{ y: -2, scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
           </svg>
           <span className="font-medium">Top</span>
@@ -190,7 +215,7 @@ export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
       )}
 
       {/* Navigation Indicators */}
-      <div className="fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-2">
+      <div className="fixed right-4 sm:right-8 top-1/2 -translate-y-1/2 flex flex-col gap-1.5 sm:gap-2">
         {sections.map((section, index) => (
           <button
             key={section.id}
@@ -199,7 +224,7 @@ export default function FullscreenLayout({ sections }: FullscreenLayoutProps) {
                 setCurrentSectionIndex(index);
               }
             }}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
               index === currentSectionIndex && !showFooter
                 ? 'bg-[#2B4257] scale-125'
                 : 'bg-gray-300 hover:bg-gray-400'

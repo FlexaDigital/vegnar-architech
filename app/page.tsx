@@ -25,10 +25,7 @@ const sections = [
     id: 'gallery',
     component: <ProductGallery />
   },
-  {
-    id: 'about',
-    component: <AboutSection />
-  },
+  
   {
     id: 'why-choose-us',
     component: <WhyChooseUs />

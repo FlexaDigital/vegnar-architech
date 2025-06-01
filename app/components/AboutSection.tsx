@@ -58,15 +58,29 @@ export default function AboutSection() {
               attention to detail has made us a trusted partner for architects and designers worldwide.
             </p>
 
-            <div className="grid grid-cols-2 gap-8 mb-8">
-              <div>
-                <div className="text-3xl font-bold text-[#2B4257] mb-2">20+</div>
-                <div className="text-gray-600">Years of Excellence</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#2B4257] mb-2">1000+</div>
-                <div className="text-gray-600">Projects Completed</div>
-              </div>
+            {/* Statistics Row */}
+            <div className="flex items-center gap-8 mb-8 p-6 bg-[#2B4257]/5 rounded-xl">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="flex items-center gap-3"
+              >
+                <div className="text-3xl sm:text-4xl font-bold text-[#2B4257]">20+</div>
+                <div className="text-sm sm:text-base text-gray-600">Years of Excellence</div>
+              </motion.div>
+              <div className="h-12 w-px bg-[#2B4257]/20" />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="flex items-center gap-3"
+              >
+                <div className="text-3xl sm:text-4xl font-bold text-[#2B4257]">1000+</div>
+                <div className="text-sm sm:text-base text-gray-600">Projects Completed</div>
+              </motion.div>
             </div>
 
             <motion.div

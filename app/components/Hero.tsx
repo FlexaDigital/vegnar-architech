@@ -9,15 +9,15 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-[#2B4257] via-[#1a2834] to-[#0f1922]" />
       
       {/* Animated background shapes */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-[30%] -left-[10%] w-[70%] h-[70%] rounded-full bg-gradient-to-br from-[#2B4257]/30 to-transparent blur-3xl" />
         <div className="absolute -bottom-[30%] -right-[10%] w-[70%] h-[70%] rounded-full bg-gradient-to-br from-[#1a2834]/40 to-transparent blur-3xl" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto py-12 sm:py-16 lg:py-20">
         <motion.h1 
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6"
+          className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-4 sm:mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -29,7 +29,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p 
-          className="text-lg sm:text-xl lg:text-2xl text-white/80 mb-12 max-w-4xl mx-auto leading-relaxed"
+          className="text-base sm:text-lg lg:text-2xl text-white/80 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -37,8 +37,9 @@ export default function Hero() {
           Discover our comprehensive range of premium architectural hardware, glass fittings, furniture accessories, and more—crafted to elevate every facet of your design.
         </motion.p>
 
+        {/* CTA Buttons */}
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
@@ -46,35 +47,17 @@ export default function Hero() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-white text-[#2B4257] font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 min-w-[200px] hover:bg-white/90"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-[#2B4257] font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 text-sm sm:text-base"
           >
-            Explore Collection
+            Explore Products
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-transparent text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 min-w-[200px] border border-white/30 hover:bg-white/10"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white/30 hover:bg-white/10 transform hover:-translate-y-0.5 transition-all duration-200 text-sm sm:text-base"
           >
-            About Us
+            Contact Sales
           </motion.button>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: 0.8, 
-            ease: "easeOut", 
-            delay: 0.6,
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-        >
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full p-1">
-            <div className="w-1.5 h-3 bg-white/30 rounded-full mx-auto" />
-          </div>
         </motion.div>
       </div>
     </div>
