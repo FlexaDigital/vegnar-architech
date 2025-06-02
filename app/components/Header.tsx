@@ -9,7 +9,8 @@ import { useSection } from '../context/SectionContext';
 const menuItems = [
   { name: 'Home', href: '/' },
   { name: 'Products', href: '/products' },
-  { name: 'About', href: '/about' }
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' }
 ];
 
 export default function Header() {

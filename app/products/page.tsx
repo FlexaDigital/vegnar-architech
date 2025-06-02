@@ -1,12 +1,11 @@
 'use client';
 
 import ProductCategoriesPage from '../components/ProductCategoriesPage';
-import FullscreenLayout from '../components/FullscreenLayout';
 import { motion } from 'framer-motion';
 
 function ProductHero() {
   return (
-    <div className="h-screen w-full bg-[#2B4257] text-white relative flex items-center justify-center">
+    <div className="relative bg-[#2B4257] text-white py-32">
       {/* Background Pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
         <div className="w-full h-full" style={{
@@ -35,36 +34,38 @@ function ProductHero() {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
       >
         <span className="text-white/60 text-sm mb-2">Scroll to explore</span>
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start p-1">
-          <motion.div 
-            className="w-1 h-2 bg-white rounded-full mx-auto"
-            animate={{ y: [0, 20, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </div>
+        <motion.div
+          animate={{
+            y: [0, 10, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+          className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start p-1"
+        >
+          <div className="w-1 h-2 bg-white rounded-full mx-auto" />
+        </motion.div>
       </motion.div>
     </div>
   );
 }
 
-const sections = [
-  {
-    id: 'hero',
-    component: <ProductHero />
-  },
-  {
-    id: 'categories',
-    component: <ProductCategoriesPage />
-  }
-];
-
 export default function ProductsPage() {
-  return <FullscreenLayout sections={sections} />;
+  return (
+    <main className="min-h-screen bg-white">
+      <ProductHero />
+      <div className="py-12">
+        <ProductCategoriesPage />
+      </div>
+    </main>
+  );
 } 

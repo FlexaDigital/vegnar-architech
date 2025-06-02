@@ -1,33 +1,33 @@
-import { Montserrat } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { metadata } from "./config/metadata";
 import { SectionProvider } from "./context/SectionContext";
+import ClientLayout from './components/ClientLayout';
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
-  display: "swap",
-  preload: true,
-});
+const inter = Inter({ subsets: ['latin'] })
 
-export { metadata };
+export const metadata: Metadata = {
+  title: 'Your Company Name',
+  description: 'Your company description',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
-      <body className={montserrat.variable}>
+      <body className={inter.className}>
         <SectionProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <ClientLayout>
+            <Header />
+            <main>{children}</main>
+          </ClientLayout>
         </SectionProvider>
       </body>
     </html>
-  );
+  )
 }
