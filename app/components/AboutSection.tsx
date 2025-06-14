@@ -24,7 +24,7 @@ export default function AboutSection() {
           >
             <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/about-us-home-page.jpg"
+                src="/Images/about-us-home-page.jpg"
                 alt="Modern architectural solutions showcase"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
