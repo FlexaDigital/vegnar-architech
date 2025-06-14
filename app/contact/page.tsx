@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import SimpleFooter from '../components/SimpleFooter'
 
 const ContactPage = () => {
   const handleSubmit = (e: React.FormEvent) => {
@@ -43,17 +44,16 @@ const ContactPage = () => {
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Office Location</h3>
                 <p className="text-gray-600">
-                  123 Business Avenue<br />
-                  Suite 100<br />
-                  City, State 12345
+                  506, Riveraware, Near RPJ Hotel<br />
+                  Kalawad Road, Rajkot<br />
+                  Gujarat, India - 360005
                 </p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Contact Information</h3>
                 <p className="text-gray-600">
-                  Email: info@company.com<br />
-                  Phone: (123) 456-7890<br />
-                  Fax: (123) 456-7891
+                  Email: sales@vegnar.com <br />
+                  Phone: +91 9998040416<br />
                 </p>
               </div>
               <div>
@@ -126,7 +126,7 @@ const ContactPage = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors duration-300"
+                className="w-full bg-[#2B4257] text-white py-3 px-6  rounded-md hover:bg-[#2B4150] transition-colors duration-300"
               >
                 Send Message
               </button>
@@ -135,15 +135,11 @@ const ContactPage = () => {
         </div>
       </div>
 
-      {/* Map Section */}
-      <div className="w-full h-96 bg-gray-200 mt-16">
-        {/* Add your map component or iframe here */}
-        <div className="w-full h-full flex items-center justify-center text-gray-500">
-          Map placeholder - Add your preferred map service here
-        </div>
-      </div>
+      
+<SimpleFooter/>
     </div>
+   
   );
 };
 
-export default ContactPage; 
+export default ContactPage;

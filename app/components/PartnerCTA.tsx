@@ -78,24 +78,9 @@ export default function PartnerCTA() {
                 Partner With Us
               </motion.button>
               <div className="flex items-center gap-4 flex-wrap sm:flex-nowrap">
-                <div className="flex -space-x-4">
-                  {[1, 2, 3, 4].map((index) => (
-                    <div
-                      key={index}
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white/20 overflow-hidden"
-                    >
-                      <Image
-                        src={`/images/partners/partner-${index}.jpg`}
-                        alt={`Partner ${index}`}
-                        width={48}
-                        height={48}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
+      
                 <p className="text-sm sm:text-base text-white/90 font-medium">
-                  Join 200+ Partners
+                  Join 70+ Partners
                 </p>
               </div>
             </div>

@@ -169,12 +169,6 @@ export default function Achievements() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-16"
         >
-          <a
-            href="#contact"
-            className="inline-block px-8 py-4 bg-white text-[#2B4257] font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
-          >
-            Start Your Project
-          </a>
         </motion.div>
       </div>
     </section>

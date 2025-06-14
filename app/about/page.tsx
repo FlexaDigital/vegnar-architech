@@ -5,9 +5,10 @@ import AboutHero from '../components/about/AboutHero';
 import AboutSection from '../components/AboutSection';
 import CompanyStory from '../components/about/CompanyStory';
 import CoreValues from '../components/about/CoreValues';
-import TeamSection from '../components/about/TeamSection';
+
 import Achievements from '../components/about/Achievements';
 import PartnerCTA from '../components/PartnerCTA';
+import MissionVision from '../components/about/MissionVision';
 
 const sections = [
   {
@@ -19,6 +20,10 @@ const sections = [
     component: <AboutSection />
   },
   {
+    id: 'mission-vision',
+    component: <MissionVision/>
+  },
+  {
     id: 'story',
     component: <CompanyStory />
   },
@@ -26,10 +31,7 @@ const sections = [
     id: 'values',
     component: <CoreValues />
   },
-  {
-    id: 'team',
-    component: <TeamSection />
-  },
+ 
   {
     id: 'achievements',
     component: <Achievements />

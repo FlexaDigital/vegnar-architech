@@ -425,7 +425,7 @@ export default function ProductCategoriesPage() {
                       }
                     }}
                   >
-                    <div className="product-image-container">
+                    <div className="product-image-container" style={{ height: '260px', minHeight: '200px', position: 'relative' }}>
                       {product.featured_media && mediaItems[product.featured_media] ? (
                         <Image
                           src={mediaItems[product.featured_media]}
@@ -436,7 +436,7 @@ export default function ProductCategoriesPage() {
                       ) : (
                         <div className="w-full h-full bg-gray-100 flex items-center justify-center">
                           <svg 
-                            className="w-12 h-12 text-gray-300" 
+                            className="w-12 h-1 text-gray-300" 
                             fill="none" 
                             stroke="currentColor" 
                             viewBox="0 0 24 24"
@@ -572,4 +572,4 @@ export default function ProductCategoriesPage() {
       )}
     </div>
   );
-} 
+}
