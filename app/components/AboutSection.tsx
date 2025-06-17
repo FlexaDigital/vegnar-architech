@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutSection() {
   return (
@@ -88,26 +89,28 @@ export default function AboutSection() {
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center group cursor-pointer"
             >
-              <span className="text-[#2B4257] font-semibold mr-2 group-hover:mr-4 transition-all">
-                Learn More About Us
-              </span>
-              <svg
-                className="w-5 h-5 text-[#2B4257] transform group-hover:translate-x-2 transition-transform"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
+              <Link href="/about" className="flex items-center">
+                <span className="text-[#2B4257] font-semibold mr-2 group-hover:mr-4 transition-all">
+                  Learn More About Us
+                </span>
+                <svg
+                  className="w-5 h-5 text-[#2B4257] transform group-hover:translate-x-2 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
       </div>
     </section>
   );
-} 
+}

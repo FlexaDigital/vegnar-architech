@@ -73,43 +73,32 @@ export default function ProductCategories({ categories = defaultCategories }: Pr
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative group"
             >
-              <Link href={`/products/${category.slug}`}>
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden group-hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative h-48">
-                    <div className="absolute inset-0 bg-[#2B4257] opacity-10 group-hover:opacity-20 transition-opacity duration-300" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#2B4257] transition-colors duration-300">
-                      {category.name}
-                    </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-2">
-                      {category.description}
-                    </p>
-                    <div className="flex items-center text-[#2B4257] font-medium">
-                      <span className="mr-2 group-hover:mr-4 transition-all duration-300">
-                        View Products
-                      </span>
-                      <svg
-                        className="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </div>
-                  </div>
+  
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden group-hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col h-full">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#2B4257] transition-colors duration-300">
+                    {category.name}
+                  </h3>
+                  <p className="text-gray-600 mb-4 line-clamp-2">
+                    {category.description}
+                  </p>
+                
                 </div>
-              </Link>
+             
             </motion.div>
           ))}
+        </div>
+        <div className="flex justify-center mt-12">
+          <Link href="/products">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-[#2B4257] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 text-base"
+            >
+              View All Products
+            </motion.button>
+          </Link>
         </div>
       </div>
     </div>
   );
-} 
+}
