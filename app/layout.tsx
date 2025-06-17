@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { SectionProvider } from "./context/SectionContext";
 import ClientLayout from './components/ClientLayout';
+import SimpleFooter from './components/SimpleFooter';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,10 +23,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SectionProvider>
-          <ClientLayout>
+          {/* <ClientLayout>
             <Header />
             <main>{children}</main>
-          </ClientLayout>
+            <Footer/>
+          </ClientLayout> */}
+           <Header />
+            <main>{children}</main>
+            <SimpleFooter/>
         </SectionProvider>
       </body>
     </html>

@@ -1,15 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutHero() {
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-[#1a2834]">
-      {/* Optional Background Image */}
+    <section
+      id="about-hero"
+      className="relative h-screen scroll-mt-20 flex flex-col justify-center overflow-hidden bg-[#1a2834] smooth-scroll"
+    >
+      {/* Background Gradient */}
       <div className="absolute inset-0 z-0">
-        {/* Replace src with your own image if desired */}
-        {/* <Image
+        {/* Optional Background Image
+        <Image
           src="/images/architecture-bg.jpg"
           alt="Architecture background"
           fill
@@ -20,16 +23,16 @@ export default function AboutHero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 py-16">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
+          {/* Left Column - Text */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-xl"
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="max-w-xl w-full text-center lg:text-left"
           >
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
               Crafting Excellence in
               <span className="block text-[#A7C7E7]">Architectural Solutions</span>
             </h1>
@@ -37,40 +40,30 @@ export default function AboutHero() {
               With over two decades of expertise, we&apos;ve been at the forefront of architectural innovation,
               delivering premium solutions that transform spaces and exceed expectations.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <motion.a
-                href="#story"
-                aria-label="Read our story"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-7 py-3 bg-white text-[#2B4257] font-semibold rounded-lg shadow-lg hover:shadow-xl hover:bg-[#A7C7E7] focus:outline-none focus:ring-2 focus:ring-[#A7C7E7] transition-all duration-200"
-              >
-                Our Story
-              </motion.a>
-              <motion.a
-                href="#contact"
-                aria-label="Contact us"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-7 py-3 bg-transparent text-white font-semibold rounded-lg border-2 border-white/30 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#A7C7E7] transition-all duration-200"
-              >
-                Contact Us
-              </motion.a>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  href="/contact"
+                  className="px-7 py-3 bg-white text-[#2B4257] font-semibold rounded-lg shadow-lg hover:shadow-xl hover:bg-[#A7C7E7] focus:outline-none focus:ring-2 focus:ring-[#A7C7E7] transition-all duration-200"
+                >
+                  Contact Us
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
 
-          {/* Stats */}
+          {/* Right Column - Stats */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="grid grid-cols-2 gap-6 sm:gap-8"
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+            className="grid grid-cols-2 sm:grid-cols-2 gap-6 sm:gap-8 justify-center w-full"
           >
             {[
-              { number: "20+", label: "Years of Excellence" },
-              { number: "1000+", label: "Projects Completed" },
-              { number: "50+", label: "Expert Team Members" },
-              { number: "100%", label: "Client Satisfaction" }
+              { number: '20+', label: 'Years of Excellence' },
+              { number: '1000+', label: 'Projects Completed' },
+              { number: '50+', label: 'Expert Team Members' },
+              { number: '100%', label: 'Client Satisfaction' }
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -93,15 +86,9 @@ export default function AboutHero() {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
-        animate={{
-          y: [0, 10, 0],
-        }}
-        transition={{
-          duration: 1.5,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
+        className="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity, repeatType: 'reverse' }}
         aria-hidden="true"
       >
         <div className="w-6 h-10 border-2 border-white/30 rounded-full p-1 flex items-start justify-center">

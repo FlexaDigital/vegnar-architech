@@ -10,7 +10,7 @@ const menuItems = [
   { name: 'Home', href: '/' },
   { name: 'Products', href: '/products' },
   { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' }
+  { name: 'E-Catalogs', href: '/catalogs' }
 ];
 
 export default function Header() {
@@ -70,17 +70,19 @@ export default function Header() {
                     </Link>
                   </motion.div>
                 ))}
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-4 py-2 rounded-lg font-medium shadow-md transition-all duration-300 border ${
-                    isScrolled 
-                      ? 'bg-[#2B4257] text-white hover:bg-[#1a2834] border-white/20' 
-                      : 'bg-white/10 text-white hover:bg-white/20 border-white/30'
-                  }`}
-                >
-                  Get Started
-                </motion.button>
+                <Link href="/contact" passHref>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`px-4 py-2 rounded-lg font-medium shadow-md transition-all duration-300 border ${
+                      isScrolled 
+                        ? 'bg-[#2B4257] text-white hover:bg-[#1a2834] border-white/20' 
+                        : 'bg-white/10 text-white hover:bg-white/20 border-white/30'
+                    }`}
+                  >
+                    Contact Us
+                  </motion.button>
+                </Link>
               </nav>
 
               {/* Mobile Menu Button */}

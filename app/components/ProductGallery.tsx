@@ -3,35 +3,15 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-// Sample product images array - replace with your actual product images
 const productImages = [
-  {
-    src: '/Images/Gallary/vg-lg-2.jpg',
-    alt: 'Modern door handle',
-  },
-  {
-    src: '/Images/Gallary/railing-1-lg.jpg',
-    alt: 'Glass partition system',
-  },
-  {
-    src: '/Images/Gallary/door-hardware-1.jpg',
-    alt: 'Sliding door system',
-  },
-  {
-    src: '/Images/Gallary/railing-3-lg.jpg',
-    alt: 'Architectural hardware',
-  },
-  {
-    src: '/Images/Gallary/railing-6-m.jpg',
-    alt: 'Modern railing',
-  },
-  {
-    src: '/Images/Gallary/Glass-hardware-4.jpg',
-    alt: 'Door closer',
-  },
+  { src: '/Images/Gallary/vg-lg-2.jpg', alt: 'Modern door handle' },
+  { src: '/Images/Gallary/railing-1-lg.jpg', alt: 'Glass partition system' },
+  { src: '/Images/Gallary/door-hardware-1.jpg', alt: 'Sliding door system' },
+  { src: '/Images/Gallary/railing-3-lg.jpg', alt: 'Architectural hardware' },
+  { src: '/Images/Gallary/railing-6-m.jpg', alt: 'Modern railing' },
+  { src: '/Images/Gallary/Glass-hardware-4.jpg', alt: 'Door closer' },
 ];
 
-// Define grid span classes for variety
 const gridSpanClasses = [
   'col-span-1 row-span-1',
   'col-span-2 row-span-1',
@@ -43,7 +23,7 @@ const gridSpanClasses = [
 
 export default function ProductGallery() {
   return (
-    <section className="relative w-full h-screen min-h-0 bg-white flex flex-col">
+    <section className="relative w-full min-h-[70vh] py-16 bg-white flex flex-col">
       {/* Background Pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
         <div
@@ -56,10 +36,9 @@ export default function ProductGallery() {
       </div>
 
       {/* Gallery Grid */}
-      <div className="relative flex-1 flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full min-h-0">
-        <div className="w-full h-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[220px] place-items-center">
+      <div className="relative z-10 flex-1 flex items-center justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[220px] place-items-center">
           {productImages.map((image, index) => {
-            // Assign a grid span class for different sizes
             const span = gridSpanClasses[index % gridSpanClasses.length];
             return (
               <div

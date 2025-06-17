@@ -1,36 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-
-const footerLinks = {
-  products: [
-    { name: 'Door Hardware', href: '/products/door-hardware' },
-    { name: 'Glass Fittings', href: '/products/glass-fittings' },
-    { name: 'Railing Systems', href: '/products/railing-systems' },
-    { name: 'Security Solutions', href: '/products/security' },
-    { name: 'Accessories', href: '/products/accessories' }
-  ],
-  company: [
-    { name: 'About Us', href: '/about' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Partner Program', href: '/partner' },
-    { name: 'News & Updates', href: '/news' },
-    { name: 'Sustainability', href: '/sustainability' }
-  ],
-  support: [
-    { name: 'Contact Us', href: '/contact' },
-    { name: 'Technical Support', href: '/support' },
-    { name: 'Documentation', href: '/docs' },
-    { name: 'Installation Guides', href: '/guides' },
-    { name: 'FAQs', href: '/faqs' }
-  ],
-  legal: [
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms of Service', href: '/terms' },
-    { name: 'Cookie Policy', href: '/cookies' },
-    { name: 'Warranty Info', href: '/warranty' }
-  ]
-};
+import { useState } from 'react';
 
 const socialLinks = [
   {
@@ -63,23 +34,26 @@ const socialLinks = [
 ];
 
 export default function SimpleFooter() {
+  const [email, setEmail] = useState('');
+
+  const handleSubscribe = () => {
+    alert(`Subscribed with: ${email}`);
+    setEmail('');
+  };
+
   return (
     <footer className="bg-gray-900 text-white">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <p className="text-gray-400 mb-8 max-w-md">
+          <div>
+            <p className="text-gray-400 mb-6 max-w-md">
               Leading provider of premium architectural hardware solutions, transforming spaces with innovation and excellence since 2003.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <a key={item.name} href={item.href} className="text-gray-400 hover:text-white">
                   <span className="sr-only">{item.name}</span>
                   {item.icon}
                 </a>
@@ -87,57 +61,36 @@ export default function SimpleFooter() {
             </div>
           </div>
 
-          {/* Links Columns */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:col-span-3">
-            {/* Products */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Products</h3>
-              <ul className="space-y-3">
-                {footerLinks.products.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-3">
+              <li><Link href="/" className="text-gray-400 hover:text-white">Home</Link></li>
+              <li><Link href="/products" className="text-gray-400 hover:text-white">Products</Link></li>
+              <li><Link href="/about" className="text-gray-400 hover:text-white">About</Link></li>
+              <li><Link href="/contact" className="text-gray-400 hover:text-white">Contact</Link></li>
+              <li><Link href="/e-catalog" className="text-gray-400 hover:text-white">E-Catalog</Link></li>
+            </ul>
+          </div>
 
-            {/* Company */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Company</h3>
-              <ul className="space-y-3">
-                {footerLinks.company.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Support */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Support</h3>
-              <ul className="space-y-3">
-                {footerLinks.support.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+          {/* Subscribe */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Subscribe</h3>
+            <p className="text-gray-400 mb-3 text-sm">Get updates on our latest products and offers.</p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none"
+              />
+              <button
+                onClick={handleSubscribe}
+                className="px-4 py-2 bg-[#2B4257] hover:bg-[#1a2834] rounded text-white transition-colors"
+              >
+                Send
+              </button>
             </div>
           </div>
         </div>
@@ -145,37 +98,19 @@ export default function SimpleFooter() {
 
       {/* Bottom Footer */}
       <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
-              <p className="text-gray-400 text-sm">
-                © {new Date().getFullYear()} Vegnar Architectural. All rights reserved.
-              </p>
-              <span className="hidden md:inline text-gray-600">•</span>
-              <p className="text-gray-400 text-sm">
-                Developed by{' '}
-                <a
-                  href="https://flexadigital.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-white transition-colors"
-                >
-                  flexadigital
-                </a>
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-6 mt-4 md:mt-0">
-              {footerLinks.legal.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-gray-400 hover:text-white transition-colors text-sm"
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+          <p>© {new Date().getFullYear()} Vegnar Architectural. All rights reserved.</p>
+          <p>
+            Developed by{' '}
+            <a
+              href="https://flexadigital.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-white"
+            >
+              flexadigital
+            </a>
+          </p>
         </div>
       </div>
     </footer>

@@ -10,7 +10,7 @@ interface ClientLayoutProps {
 
 const ClientLayout = ({ children }: ClientLayoutProps) => {
   const pathname = usePathname();
-  const showFooter = pathname === '/';  // Only show footer on home page
+  const showFooter = pathname === '/' || pathname === '/about'; // Show on home and about
 
   return (
     <>
@@ -20,4 +20,4 @@ const ClientLayout = ({ children }: ClientLayoutProps) => {
   );
 };
 
-export default ClientLayout; 
+export default ClientLayout;

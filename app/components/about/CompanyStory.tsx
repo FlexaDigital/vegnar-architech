@@ -28,9 +28,12 @@ const timeline = [
 
 export default function CompanyStory() {
   return (
-    <section className="min-h-screen flex items-center bg-gray-50 overflow-y-auto py-10">
+    <section
+      id="company-story"
+      className="relative py-16 sm:py-20 bg-gray-50 scroll-mt-20"
+    >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -46,33 +49,34 @@ export default function CompanyStory() {
           </p>
         </motion.div>
 
-        {/* Story Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-8">
-          {/* Image */}
+        {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* Image Column */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative h-[320px] sm:h-[400px] rounded-2xl overflow-hidden"
+            className="relative h-[280px] sm:h-[380px] md:h-[440px] lg:h-[500px] rounded-2xl overflow-hidden"
           >
             <Image
-              src="/images/about/company-story.jpg"
+              src="/images/collection-bg.jpg"
               alt="Company story"
               fill
-              className="object-cover"
+              className="object-cover object-center"
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#2B4257]/80 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6 text-white">
-              <h3 className="text-2xl font-bold mb-2">Built on Trust</h3>
-              <p className="text-white/90">
-                Our commitment to excellence has earned us the trust of countless clients worldwide
+              <h3 className="text-xl sm:text-2xl font-bold mb-2">Built on Trust</h3>
+              <p className="text-sm sm:text-base text-white/90">
+                Our commitment to excellence has earned us the trust of countless clients worldwide.
               </p>
             </div>
           </motion.div>
 
-          {/* Timeline */}
-          <div className="space-y-8">
+          {/* Timeline Column */}
+          <div className="space-y-10">
             {timeline.map((item, index) => (
               <motion.div
                 key={item.year}
@@ -83,13 +87,13 @@ export default function CompanyStory() {
                 className="relative pl-8 border-l-2 border-[#2B4257]/20"
               >
                 <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-[#2B4257]" />
-                <div className="text-sm font-semibold text-[#2B4257] mb-1">
+                <div className="text-sm sm:text-base font-semibold text-[#2B4257] mb-1">
                   {item.year}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                   {item.title}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 text-sm sm:text-base">
                   {item.description}
                 </p>
               </motion.div>

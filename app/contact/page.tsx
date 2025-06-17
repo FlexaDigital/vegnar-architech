@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import SimpleFooter from '../components/SimpleFooter'
+
 
 const ContactPage = () => {
   const handleSubmit = (e: React.FormEvent) => {
@@ -134,9 +134,6 @@ const ContactPage = () => {
           </motion.div>
         </div>
       </div>
-
-      
-<SimpleFooter/>
     </div>
    
   );
