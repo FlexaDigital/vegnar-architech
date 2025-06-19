@@ -138,17 +138,19 @@ export default function Header() {
                     </Link>
                   </motion.div>
                 ))}
-                <motion.div
-                  variants={{
-                    open: { x: 0, opacity: 1 },
-                    closed: { x: -20, opacity: 0 }
-                  }}
-                  transition={{ duration: 0.2, delay: menuItems.length * 0.1 }}
-                >
-                  <button className="w-full px-4 py-2 bg-[#2B4257] text-white rounded-lg font-medium shadow-md hover:shadow-xl transition-all duration-300 hover:bg-[#1a2834] border border-white/20">
-                    Get Started
-                  </button>
-                </motion.div>
+                <Link href="/contact" passHref>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`px-4 py-2 rounded-lg font-medium shadow-md transition-all duration-300 border ${
+                      isScrolled 
+                        ? 'bg-[#2B4257] text-white hover:bg-[#1a2834] border-white/20' 
+                        : 'bg-white/10 text-white hover:bg-white/20 border-white/30'
+                    }`}
+                  >
+                    Contact Us
+                  </motion.button>
+                </Link>
               </div>
             </motion.nav>
           </div>

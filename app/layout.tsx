@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { SectionProvider } from "./context/SectionContext";
 import ClientLayout from './components/ClientLayout';
 import SimpleFooter from './components/SimpleFooter';
+import WhatsAppButton from './components/WhatsAppButton';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,6 +31,7 @@ export default function RootLayout({
           </ClientLayout> */}
            <Header />
             <main>{children}</main>
+            <WhatsAppButton />
             <SimpleFooter/>
         </SectionProvider>
       </body>
