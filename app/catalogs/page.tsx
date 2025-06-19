@@ -4,19 +4,20 @@ import { motion } from 'framer-motion';
 import { Download, Eye } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Metadata } from 'next';
 
 const catalogs = [
   {
     title: 'Aluminium Glass Railing System',
     description: 'Complete aluminum and glass railing solutions.',
     fileUrl: '/download/Vegnar-Aluminium-Railing.pdf',
-    previewImg: '/download/Vegnar-Aluminium-Railing-preview.png'
+    previewImg: '/download/vegnar-aluminium-railing-system.png'
   },
   {
     title: 'Glass Hardware Fittings',
     description: 'Specialized catalog for all glass hardware fittings.',
     fileUrl: '/download/Glass-Hardware-Fittings.pdf',
-    previewImg: '/download/Glass-Hardware-Fittings.jpeg'
+    previewImg: '/download/Glass-Hardware-Fittings.jpeg '
   },
   {
     title: 'Stainless Steel Railings Systems',
@@ -29,7 +30,7 @@ const catalogs = [
 export default function ECatalogPage() {
   return (
     <>
-      {/* Hero Section */}
+    
       <section className="relative min-h-[60vh] flex items-center justify-center bg-[#1a2834] text-white text-center">
         <div className="absolute inset-0 bg-gradient-to-br from-[#2B4257]/90 via-[#1a2834]/95 to-[#1a2834]/100 z-0" />
         <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
@@ -52,7 +53,7 @@ export default function ECatalogPage() {
         </div>
       </section>
 
-      {/* Catalog Grid */}
+      
       <section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -77,7 +78,7 @@ export default function ECatalogPage() {
   transition={{ duration: 0.5, delay: index * 0.1 }}
   className="bg-[#F7F9FB] rounded-xl shadow-md overflow-hidden flex flex-col"
 >
-  {/* Portrait Image Preview */}
+
   <div className="relative w-full h-72">
     <Image
       src={catalog.previewImg}

@@ -63,7 +63,7 @@ export default function AboutPage() {
       <AboutSection />
       <MissionVision />
       <CompanyStory />
-          <Achievements />
+      <Achievements/>
       <CoreValues />
   
       <PartnerCTA />

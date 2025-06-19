@@ -34,7 +34,7 @@ export default function AboutHero() {
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
               Crafting Excellence in
-              <span className="block text-[#A7C7E7]">Architectural Solutions</span>
+              <span className="block text-[#A7C7E7]">Vegnar Architectural Solutions</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8 leading-relaxed">
               With over two decades of expertise, we&apos;ve been at the forefront of architectural innovation,

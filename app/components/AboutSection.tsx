@@ -49,14 +49,15 @@ export default function AboutSection() {
             className="relative"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-              Crafting Excellence in
-              <span className="block text-[#2B4257]">Architectural Solutions</span>
+              Crafting Excellence with 
+              <span className="block text-[#2B4257]">Vegnar Architectural Solutions</span>
             </h2>
             
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              With over two decades of expertise, we've been at the forefront of architectural innovation, 
-              delivering premium hardware solutions that transform spaces. Our commitment to quality and 
-              attention to detail has made us a trusted partner for architects and designers worldwide.
+  Vegnar Architectural, we bring over 20 years of unmatched expertise in delivering innovative architectural hardware solutions. Our premium range of products is designed to transform spaces with elegance, functionality, and lasting durability.
+  </p>
+   <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+As a trusted brand among architects, designers, and builders worldwide, Vegnar Architectural is committed to precision engineering, cutting-edge design, and superior quality. From concept to creation, every piece reflects our dedication to craftsmanship and innovation.
             </p>
 
             {/* Statistics Row */}

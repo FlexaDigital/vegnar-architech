@@ -10,10 +10,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: 'Your Company Name',
-  description: 'Your company description',
-}
+
 
 export default function RootLayout({
   children,

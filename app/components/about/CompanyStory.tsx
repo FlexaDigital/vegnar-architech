@@ -60,7 +60,7 @@ export default function CompanyStory() {
             className="relative h-[280px] sm:h-[380px] md:h-[440px] lg:h-[500px] rounded-2xl overflow-hidden"
           >
             <Image
-              src="/images/collection-bg.jpg"
+              src="/Images/collection-bg.jpg"
               alt="Company story"
               fill
               className="object-cover object-center"
