@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+
 import Link from 'next/link';
 
 interface Category {
@@ -20,22 +20,22 @@ interface ProductCategoriesProps {
 const defaultCategories = [
   {
     id: 1,
-    name: 'Door Hardware',
-    description: 'Premium door handles, locks, and accessories for residential and commercial use.',
+    name: 'Aluminium Glass Railing System',
+    description: 'A modern, durable railing solution featuring sleek aluminum profiles and clear tempered glass—ideal for balconies, staircases, and terraces, offering safety without compromising the view.',
     slug: 'door-hardware',
     parent: 0
   },
   {
     id: 2,
-    name: 'Glass Fittings',
-    description: 'High-quality glass hardware solutions for modern architectural designs.',
+    name: 'Glass Hardware Fittings',
+    description: 'Premium quality fittings designed for glass installations—ensuring secure, elegant mounting for doors, partitions, and balustrades.',
     slug: 'glass-fittings',
     parent: 0
   },
   {
     id: 3,
-    name: 'Railing Systems',
-    description: 'Elegant and durable railing solutions for stairs, balconies, and more.',
+    name: 'Stainless Steel Railings',
+    description: 'Strong, corrosion-resistant railings with a sleek, modern finish—perfect for indoor and outdoor applications, combining safety with style.',
     slug: 'railing-systems',
     parent: 0
   }

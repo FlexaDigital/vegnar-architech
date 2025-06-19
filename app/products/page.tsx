@@ -1,8 +1,10 @@
 'use client';
 
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import Image from 'next/image';
 import ProductCategoriesPage from '../components/ProductCategoriesPage';
 
-import SimpleFooter from '../components/SimpleFooter';
 
 function ProductHero() {
   return (
@@ -23,7 +25,7 @@ export default function ProductsPage() {
       <div className="flex-1">
         <ProductCategoriesPage />
       </div>
-      <SimpleFooter/>
+     
     </div>
   );
-} 
+}

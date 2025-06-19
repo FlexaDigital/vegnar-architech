@@ -15,14 +15,14 @@ const catalogs = [
   {
     title: 'Glass Hardware Fittings',
     description: 'Specialized catalog for all glass hardware fittings.',
-    fileUrl: '/catalogs/glass-fittings.pdf',
-    previewImg: '/download/SS-Railing.jpg'
+    fileUrl: '/download/Glass-Hardware-Fittings.pdf',
+    previewImg: '/download/Glass-Hardware-Fittings.jpeg'
   },
   {
     title: 'Stainless Steel Railings Systems',
     description: 'High-grade stainless steel railing systems.',
     fileUrl: '/catalogs/railing-systems.pdf',
-    previewImg: '/download/Glass-Hardware-Fittings.jpg'
+    previewImg: '/download/SS-Railing.jpg'
   }
 ];
 
@@ -87,7 +87,6 @@ export default function ECatalogPage() {
     />
   </div>
 
-  {/* Title + Actions */}
   <div className="p-6 flex flex-col flex-grow justify-between">
     <div>
       <h3 className="text-xl font-semibold text-[#2B4257] mb-2">{catalog.title}</h3>
