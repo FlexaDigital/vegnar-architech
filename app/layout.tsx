@@ -7,6 +7,7 @@ import { SectionProvider } from "./context/SectionContext";
 import ClientLayout from './components/ClientLayout';
 import SimpleFooter from './components/SimpleFooter';
 import WhatsAppButton from './components/WhatsAppButton';
+import TawkToWidget from './components/TawkToWidget';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,6 +30,7 @@ export default function RootLayout({
            <Header />
             <main>{children}</main>
             <WhatsAppButton />
+            <TawkToWidget />
             <SimpleFooter/>
         </SectionProvider>
       </body>
