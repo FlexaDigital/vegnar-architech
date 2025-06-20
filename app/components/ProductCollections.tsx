@@ -102,7 +102,7 @@ export default function ProductCollections() {
             >
               <Link href={collection.href}>
                 <div className="group relative p-6 rounded-2xl bg-gradient-to-br from-white to-gray-50 border border-gray-200/50 shadow-sm hover:shadow-xl transition-all duration-300">
-                  {/* Background gradient */}
+                  
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#2B4257]/10 to-[#1a2834]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
                   {/* Content */}

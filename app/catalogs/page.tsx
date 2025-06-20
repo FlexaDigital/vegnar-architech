@@ -17,7 +17,7 @@ const catalogs = [
     title: 'Glass Hardware Fittings',
     description: 'Specialized catalog for all glass hardware fittings.',
     fileUrl: '/download/Glass-Hardware-Fittings.pdf',
-    previewImg: '/download/Glass-Hardware-Fittings.jpeg '
+    previewImg: '/download/glass-hardware-fittings.png'
   },
   {
     title: 'Stainless Steel Railings Systems',

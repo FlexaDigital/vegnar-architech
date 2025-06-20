@@ -56,7 +56,7 @@ export default function PartnerCTA() {
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-white text-[#2B4257] font-semibold rounded-lg shadow-lg hover:shadow-xl hover:bg-[#A7C7E7] transition-all duration-200"
                 >
-                  Partner With Us
+                  Request for Quote
                 </motion.button>
               </Link>
               <p className="mt-4 text-sm text-white/80">Join 70+ Partners</p>

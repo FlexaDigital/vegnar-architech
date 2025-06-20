@@ -19,16 +19,7 @@ export default function PartnerPage() {
             solutions that shape the future of spaces.
           </p>
 
-          <div className="flex gap-8 mb-8">
-            <div>
-              <p className="text-3xl font-bold">20+</p>
-              <p className="text-sm text-gray-400">Years of Excellence</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold">1000+</p>
-              <p className="text-sm text-gray-400">Projects Completed</p>
-            </div>
-          </div>
+      
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-100">
             <div className="bg-[#3B556E] p-4 rounded-lg">
@@ -108,7 +99,6 @@ export default function PartnerPage() {
             </motion.button>
           </form>
         </div>
-        
       </div>
       
     </section>

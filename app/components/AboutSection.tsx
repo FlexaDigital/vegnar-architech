@@ -25,7 +25,7 @@ export default function AboutSection() {
           >
             <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/Images/about-us.jpg"
+                src="/Images/vegnar-about-us.jpg"
                 alt="Modern architectural solutions showcase"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -54,36 +54,14 @@ export default function AboutSection() {
             </h2>
             
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-  Vegnar Architectural, we bring over 20 years of unmatched expertise in delivering innovative architectural hardware solutions. Our premium range of products is designed to transform spaces with elegance, functionality, and lasting durability.
+  Vegnar Architectural delivers unmatched expertise in innovative architectural hardware solutions. Our premium range of products is designed to transform spaces with elegance, functionality, and lasting durability.
   </p>
    <p className="text-lg text-gray-600 mb-8 leading-relaxed">
 As a trusted brand among architects, designers, and builders worldwide, Vegnar Architectural is committed to precision engineering, cutting-edge design, and superior quality. From concept to creation, every piece reflects our dedication to craftsmanship and innovation.
             </p>
 
             {/* Statistics Row */}
-            <div className="flex items-center gap-8 mb-8 p-6 bg-[#2B4257]/5 rounded-xl">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="flex items-center gap-3"
-              >
-                <div className="text-3xl sm:text-4xl font-bold text-[#2B4257]">20+</div>
-                <div className="text-sm sm:text-base text-gray-600">Years of Excellence</div>
-              </motion.div>
-              <div className="h-12 w-px bg-[#2B4257]/20" />
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="flex items-center gap-3"
-              >
-                <div className="text-3xl sm:text-4xl font-bold text-[#2B4257]">1000+</div>
-                <div className="text-sm sm:text-base text-gray-600">Projects Completed</div>
-              </motion.div>
-            </div>
+           
 
             <motion.div
               whileHover={{ scale: 1.05 }}

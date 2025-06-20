@@ -35,7 +35,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          Discover our comprehensive range of premium architectural hardware, glass fittings, furniture accessories, and more—crafted to elevate every facet of your design.
+         Discover our comprehensive range of premium architectural “Glass fitting hardware, Aluminium & stainless steel railing systems”, and more--crafted to elevate every facet of your design.
         </motion.p>
 
         {/* CTA Buttons */}

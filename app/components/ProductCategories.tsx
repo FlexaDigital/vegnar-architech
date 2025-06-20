@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
-
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useRef } from 'react';
 import Link from 'next/link';
 
 interface Category {
@@ -16,7 +16,6 @@ interface ProductCategoriesProps {
   categories?: Category[];
 }
 
-// Default categories if none are provided
 const defaultCategories = [
   {
     id: 1,
@@ -42,10 +41,27 @@ const defaultCategories = [
 ];
 
 export default function ProductCategories({ categories = defaultCategories }: ProductCategoriesProps) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const smoothY = useSpring(y, { stiffness: 100, damping: 30 });
+
   return (
-    <div className="min-h-screen w-full bg-white flex items-center justify-center py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
+    <div ref={ref} className="min-h-screen w-full bg-white flex items-center justify-center py-20 relative overflow-hidden">
+      {/* Parallax Background Image */}
+      <motion.img
+        src="/Images/catagory-bg.jpg"
+        alt="Product background"
+        style={{ y: smoothY }}
+        className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none z-0"
+      />
+
+      {/* Content Overlay */}
+      <div className="absolute inset-0 bg-white/60 z-0" />
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -54,6 +70,7 @@ export default function ProductCategories({ categories = defaultCategories }: Pr
         >
           Our Product Categories
         </motion.h2>
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -63,7 +80,7 @@ export default function ProductCategories({ categories = defaultCategories }: Pr
           Explore our comprehensive range of architectural solutions
         </motion.p>
 
-        {/* Categories Grid */}
+        {/* Category Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category, index) => (
             <motion.div
@@ -73,20 +90,17 @@ export default function ProductCategories({ categories = defaultCategories }: Pr
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative group"
             >
-  
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden group-hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col h-full">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#2B4257] transition-colors duration-300">
-                    {category.name}
-                  </h3>
-                  <p className="text-gray-600 mb-4 line-clamp-2">
-                    {category.description}
-                  </p>
-                
-                </div>
-             
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden group-hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col h-full">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#2B4257] transition-colors duration-300">
+                  {category.name}
+                </h3>
+                <p className="text-gray-600 mb-4 line-clamp-2">{category.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
+
+        {/* View All Button */}
         <div className="flex justify-center mt-12">
           <Link href="/products">
             <motion.button

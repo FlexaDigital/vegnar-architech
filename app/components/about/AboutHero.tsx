@@ -37,7 +37,7 @@ export default function AboutHero() {
               <span className="block text-[#A7C7E7]">Vegnar Architectural Solutions</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-white/80 mb-8 leading-relaxed">
-              With over two decades of expertise, we&apos;ve been at the forefront of architectural innovation,
+              Since incorporation, we&apos;ve been at the forefront of architectural innovation,
               delivering premium solutions that transform spaces and exceed expectations.
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4">
