@@ -9,7 +9,7 @@ export default function AboutHero() {
       id="about-hero"
       className="relative min-h-screen scroll-mt-20 flex flex-col justify-center overflow-hidden bg-[#1a2834] smooth-scroll"
     >
-      {/* Background Gradient */}
+
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-[#2B4257]/90 via-[#1a2834]/95 to-[#1a2834]/100" />
       </div>

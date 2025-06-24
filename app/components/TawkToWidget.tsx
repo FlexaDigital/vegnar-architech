@@ -9,7 +9,6 @@ const TawkToWidget = () => {
       script.async = true;
       script.charset = 'UTF-8';
       script.setAttribute('crossorigin', '*');
-
       document.head.appendChild(script);
     }
   }, []);
