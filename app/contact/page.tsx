@@ -8,38 +8,39 @@ const ContactPage = () => {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
+  e.preventDefault();
+  setLoading(true);
 
-    const form = e.currentTarget;
-    const formData = {
-      fullName: form.name.value,
-      email: form.email.value,
-      subject: form.subject.value,
-      message: form.message.value,
-      formType: 'contact', // ✅ Google Script identifies this to write to Sheet2
-    };
-
-    try {
-      await fetch(
-        'https://script.google.com/macros/s/AKfycbwCPsJZ_I5V10QkQb9vqzAcG-iESxdB39bk5d78-aJuAlj_my2Q8MdSqqOzxitl_j_k/exec',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-          mode: 'no-cors', // ✅ Use if you don’t need response handling (safe for Google Script)
-        }
-      );
-
-      toast.success('Message sent successfully!');
-      form.reset();
-    } catch (err) {
-      toast.error('Failed to send message.');
-      console.error(err);
-    }
-
-    setLoading(false);
+  const formDataRaw = new FormData(e.currentTarget);
+  const formData = {
+    fullName: formDataRaw.get('name') as string,
+    email: formDataRaw.get('email') as string,
+    subject: formDataRaw.get('subject') as string,
+    message: formDataRaw.get('message') as string,
+    formType: 'contact',
   };
+
+  try {
+    await fetch(
+      'https://script.google.com/macros/s/AKfycbwCPsJZ_I5V10QkQb9vqzAcG-iESxdB39bk5d78-aJuAlj_my2Q8MdSqqOzxitl_j_k/exec',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+        mode: 'no-cors',
+      }
+    );
+
+    toast.success('Message sent successfully!');
+    e.currentTarget.reset();
+  } catch (err) {
+    toast.error('Failed to send message.');
+    console.error(err);
+  }
+
+  setLoading(false);
+};
+
 
   return (
     <div className="min-h-screen bg-gray-50">
