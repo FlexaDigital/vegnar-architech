@@ -18,16 +18,17 @@ export default function PartnerPage() {
       phone: e.target.phone.value,
       businessType: e.target.businessType.value,
       message: e.target.message.value,
+      formType: 'partner', // ✅ Used by Google Apps Script to determine Sheet1
     };
 
     try {
       await fetch(
-        'https://script.google.com/macros/s/AKfycbwuygLUi027jkjzJu8hKeNoEFMlY7OF5ljWAwOK8v4CPAFJIG-0Eu5xheliWKzGg7XmPA/exec',
+        'https://script.google.com/macros/s/AKfycbwCPsJZ_I5V10QkQb9vqzAcG-iESxdB39bk5d78-aJuAlj_my2Q8MdSqqOzxitl_j_k/exec',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData),
-          mode: 'no-cors', // for Google Apps Script
+          mode: 'no-cors', // Required for Apps Script
         }
       );
 
