@@ -22,7 +22,7 @@ const catalogs = [
   {
     title: 'Stainless Steel Railings Systems',
     description: 'High-grade stainless steel railing systems.',
-    fileUrl: '/catalogs/railing-systems.pdf',
+    fileUrl: '/download/SS-Railing.pdf',
     previewImg: '/download/SS-Railing.jpg'
   }
 ];
