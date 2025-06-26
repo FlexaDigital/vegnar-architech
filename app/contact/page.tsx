@@ -80,9 +80,9 @@ const ContactPage = () => {
     <div>
       <h3 className="text-lg font-semibold text-gray-900 mb-2">India Office</h3>
       <p className="text-gray-600">
-        506, Riveraware, Near RPJ Hotel<br />
-        Kalawad Road, Rajkot<br />
-        Gujarat, India - 360005
+        256,Jasal Complex Nanavati Chowk,<br />
+        150 Feet Ring Rd, above Axis bank<br />
+        Rajkot, Gujarat 360007
       </p>
       <h3 className="text-lg font-semibold text-gray-900 mt-4 mb-2">Contact Information</h3>
       <p className="text-gray-600">
@@ -94,24 +94,6 @@ const ContactPage = () => {
         Monday - Friday: 9:00 AM - 6:00 PM<br />
         Saturday: 10:00 AM - 4:00 PM<br />
         Sunday: Closed
-      </p>
-    </div>
-
-    {/* USA Office */}
-    <div>
-      <h3 className="text-lg font-semibold text-gray-900 mb-2">USA Office</h3>
-      <p className="text-gray-600">
-        16848 W. Lake Houston Parkway,<br />
-        Humble, TX 77346
-      </p> <br/>
-      <h3 className="text-lg font-semibold text-gray-900 mt-4 mb-2">Contact Information</h3>
-      <p className="text-gray-600">
-        Email: usa@vegnararch.com
-      </p><br/>
-      <h3 className="text-lg font-semibold text-gray-900 mt-4 mb-2">Business Hours (CST)</h3>
-      <p className="text-gray-600">
-        Monday - Friday: 9:00 AM - 5:00 PM<br />
-        Saturday & Sunday: Closed
       </p>
     </div>
   </div>
@@ -191,4 +173,4 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage;
+export default ContactPage; 
