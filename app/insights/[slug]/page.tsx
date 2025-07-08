@@ -37,10 +37,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Get category name
   let categoryName = 'Insights';
   if (post.categories && post.categories.length > 0) {
-    const category = await fetchCategory(post.categories[0]);
-    if (category) {
-      categoryName = category.name;
-    }
+    try {
+      const catRes = await fetch(`https://cms-arch.flexadigital.com/wp-json/wp/v2/categories/${post.categories[0]}`, {
+        next: { revalidate: 3600 }
+      });
+      if (catRes.ok) {
+        const category = await catRes.json();
+        categoryName = category.name;
+      }
+    } catch {}
   }
 
   return {
