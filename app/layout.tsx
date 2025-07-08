@@ -14,8 +14,54 @@ import Script from 'next/script';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Your Site Title',
-  description: 'Your Site Description',
+  title: {
+    default: 'Vegnar Architectural Hardware | Premium Modern Solutions',
+    template: '%s | Vegnar Architectural'
+  },
+  description: 'Leading manufacturer of premium architectural hardware including railing systems, door hardware, window hardware, and glass fittings. Quality solutions for modern spaces.',
+  keywords: 'architectural hardware, railing systems, door hardware, window hardware, glass fittings, aluminum railings, stainless steel railings, Vegnar, architectural solutions',
+  authors: [{ name: 'Vegnar Architectural' }],
+  creator: 'Vegnar Architectural',
+  publisher: 'Vegnar Architectural',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://vegnararch.com',
+    siteName: 'Vegnar Architectural',
+    title: 'Vegnar Architectural Hardware | Premium Modern Solutions',
+    description: 'Leading manufacturer of premium architectural hardware including railing systems, door hardware, and glass fittings.',
+    images: [
+      {
+        url: 'https://vegnararch.com/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Vegnar Architectural Hardware',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Vegnar Architectural Hardware | Premium Modern Solutions',
+    description: 'Leading manufacturer of premium architectural hardware including railing systems, door hardware, and glass fittings.',
+    images: ['https://vegnararch.com/images/og-image.jpg'],
+  },
+  verification: {
+    google: 'lNCnY8r7-XFCmAt5dFHQs8e5UBB0naWp1S_xtDl5y7I',
+  },
+  alternates: {
+    canonical: 'https://vegnararch.com',
+  },
 };
 
 export default function RootLayout({
@@ -26,11 +72,50 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* ✅ Google Site Verification for Search Console */}
-        <meta
-          name="google-site-verification"
-          content="lNCnY8r7-XFCmAt5dFHQs8e5UBB0naWp1S_xtDl5y7I"
+        {/* Structured Data for Organization */}
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Vegnar Architectural',
+              url: 'https://vegnararch.com',
+              logo: 'https://vegnararch.com/vegnar-architectural-logo.png',
+              description: 'Leading manufacturer of premium architectural hardware including railing systems, door hardware, and glass fittings.',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '256, Jasal Complex Nanavati Chowk, 150 Feet Ring Rd, above Axis bank',
+                addressLocality: 'Rajkot',
+                addressRegion: 'Gujarat',
+                postalCode: '360007',
+                addressCountry: 'IN'
+              },
+              contactPoint: {
+                '@type': 'ContactPoint',
+                telephone: '+91-9998040416',
+                contactType: 'customer service',
+                email: 'sales@vegnar.com'
+              },
+              sameAs: [
+                'https://vegnararch.com'
+              ]
+            })
+          }}
         />
+        
+        {/* Error boundary for Tawk.to */}
+        <Script id="tawk-error-handler" strategy="beforeInteractive">
+          {`
+            window.addEventListener('error', function(e) {
+              if (e.filename && e.filename.includes('tawk.to')) {
+                e.preventDefault();
+                return false;
+              }
+            });
+          `}
+        </Script>
 
         {/* ✅ Google Analytics 4 via gtag.js */}
         <Script

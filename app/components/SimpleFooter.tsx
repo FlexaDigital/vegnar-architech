@@ -69,6 +69,7 @@ export default function SimpleFooter() {
               <li><Link href="/" className="text-gray-400 hover:text-white">Home</Link></li>
               <li><Link href="/products" className="text-gray-400 hover:text-white">Products</Link></li>
               <li><Link href="/about" className="text-gray-400 hover:text-white">About</Link></li>
+              <li><Link href="/insights" className="text-gray-400 hover:text-white">Insights</Link></li>
               <li><Link href="/contact" className="text-gray-400 hover:text-white">Contact</Link></li>
               <li><Link href="/catalogs" className="text-gray-400 hover:text-white">E-Catalog</Link></li>
             </ul>

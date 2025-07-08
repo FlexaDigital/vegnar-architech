@@ -1,31 +1,28 @@
-'use client';
+import ProductsClient from './ProductsClient';
+import { Metadata } from 'next';
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image';
-import ProductCategoriesPage from '../components/ProductCategoriesPage';
+export const metadata: Metadata = {
+  title: 'Architectural Hardware Products | Railing Systems, Door Hardware & Glass Fittings',
+  description: 'Explore Vegnar\'s complete range of architectural hardware products including aluminum railing systems, stainless steel railings, door hardware, window hardware, and glass fittings.',
+  keywords: 'architectural hardware products, railing systems, door hardware, window hardware, glass fittings, aluminum railings, stainless steel railings, pull handles, door hinges, mortice handles, architectural hardware catalog',
+  openGraph: {
+    title: 'Premium Architectural Hardware Products | Vegnar Collection',
+    description: 'Browse our extensive collection of architectural hardware products. Quality railing systems, door hardware, and glass fittings for modern spaces.',
+    url: 'https://vegnararch.com/products',
+    siteName: 'Vegnar Architectural',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Architectural Hardware Products | Vegnar',
+    description: 'Premium railing systems, door hardware, and glass fittings. Explore our complete product range.',
+  },
+  alternates: {
+    canonical: 'https://vegnararch.com/products',
+  },
+};
 
-
-function ProductHero() {
-  return (
-    <div className="bg-[#2B4257] text-white py-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mt-8 sm:mt-12">
-  Our Products
-</h1>
-      </div>
-    </div>
-  );
-}
 
 export default function ProductsPage() {
-  return (
-    <div className="min-h-screen bg-white flex flex-col">
-      <ProductHero />
-      <div className="flex-1">
-        <ProductCategoriesPage />
-      </div>
-     
-    </div>
-  );
+  return <ProductsClient />;
 }
