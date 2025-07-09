@@ -1,0 +1,480 @@
+/* Main Container */
+.mainContainer {
+  scroll-padding-top: 100px;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+}
+
+.contentWrapper {
+  padding: 1.5rem;
+  line-height: 1.6;
+  color: #333;
+  width: 100%;
+}
+
+/* Main Article Styling */
+.article {
+  font-size: 1rem;
+}
+
+/* Headings */
+.article h1 {
+  font-size: 2.25rem;
+  line-height: 1.3;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.article h2 {
+  font-size: 1.75rem;
+  line-height: 1.4;
+  margin: 1.75rem 0 1rem;
+  font-weight: 600;
+  color: #38a169;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.article h2 span[aria-hidden="true"] {
+  font-size: 1.125rem;
+}
+
+.article h3 {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin: 1.5rem 0 1rem;
+  font-weight: 500;
+  color: #2d3748;
+}
+
+.article h4,
+.article h5,
+.article h6 {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin: 1.25rem 0 1rem;
+  font-weight: 500;
+  color: #2d3748;
+}
+
+/* Paragraphs */
+.article p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+/* Links */
+.article a {
+  color: #38a169;
+  text-decoration: underline;
+  transition: color 0.2s ease-in-out;
+}
+
+.article a:hover {
+  color: #2f855a;
+}
+
+/* Lists */
+.article ul,
+.article ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.article ul {
+  list-style-type: disc;
+}
+
+.article ol {
+  list-style-type: decimal;
+}
+
+.article li {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+  color: #555;
+  position: relative;
+  padding-left: 0.25rem;
+}
+
+/* Nested List Styles */
+.article ul ul,
+.article ol ol,
+.article ul ol,
+.article ol ul {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+/* Custom List Markers */
+.article ul li::marker {
+  color: #38a169;
+}
+
+.article ol li::marker {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.article li ul li::marker,
+.article li ol li::marker {
+  color: #718096;
+}
+
+/* Blockquote */
+.article blockquote {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border-left: 0.25rem solid #38a169;
+  background-color: #f0fff4;
+  font-style: italic;
+  color: #38a169;
+  border-radius: 0.25rem;
+}
+
+.article blockquote p {
+  margin-bottom: 0.6rem;
+  line-height: 1.6;
+}
+
+/* Tables */
+.article table {
+  width: 100%;
+  margin-bottom: 1.25rem;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.article thead {
+  background-color: #38a169;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.article th {
+  padding: 0.6rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.article tbody tr {
+  background-color: white;
+}
+
+.article tbody tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+.article td {
+  padding: 0.6rem;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+/* Inline Formatting */
+.article strong {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.article em {
+  font-style: italic;
+  color: #718096;
+}
+
+/* Mobile TOC Toggle Button */
+.tocMobileToggle {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background-color: #38a169;
+  color: white;
+  border: none;
+  padding: 0.75rem 0.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.tocMobileToggle:hover {
+  background-color: #2f855a;
+  transform: translateY(-50%) translateX(2px);
+}
+
+@media (min-width: 1024px) {
+  .tocMobileToggle {
+    display: none;
+  }
+}
+
+/* Mobile Overlay */
+.tocOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 45;
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .tocOverlay {
+    display: block;
+  }
+}
+
+/* Table of Contents (TOC) */
+.tocNav {
+  background-color: #f0f9f0;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  font-size: 0.875rem;
+  color: #3a7a3a;
+  font-weight: 500;
+  position: sticky;
+  top: 80px;
+  z-index: 10;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  width: 320px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2f2e2;
+  margin-bottom: 2rem;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 1023px) {
+  .tocNav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 320px;
+    max-width: 85vw;
+    height: 100vh;
+    z-index: 50;
+    margin-bottom: 0;
+    border-radius: 0;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+  }
+  
+  .tocNavOpen {
+    left: 0;
+  }
+}
+
+.tocHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.tocCloseBtn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #3a7a3a;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.tocCloseBtn:hover {
+  background-color: #e2f2e2;
+  color: #2b6c4a;
+}
+
+@media (max-width: 1023px) {
+  .tocCloseBtn {
+    display: block;
+  }
+}
+
+.tocTitle {
+  margin-bottom: 0;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  color: #2b6c4a;
+  font-weight: 600;
+}
+
+@media (min-width: 1024px) {
+  .tocTitle {
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid #d4f5e1;
+    padding-bottom: 0.75rem;
+  }
+}
+
+.tocList {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+.tocListItem {
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.tocItemWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tocToggle {
+  background: none;
+  border: none;
+  color: #3a7a3a;
+  cursor: pointer;
+  padding: 0.25rem;
+  margin-left: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tocToggle:hover {
+  background-color: #e2f2e2;
+  color: #2b6c4a;
+}
+
+.tocSubList {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0 0 0;
+  border-left: 2px solid #e2f2e2;
+  padding-left: 0.75rem;
+}
+
+.tocLink {
+  color: #3a7a3a;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  display: block;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  line-height: 1.4;
+  border: 1px solid transparent;
+  position: relative;
+  flex: 1;
+}
+
+.tocLink:hover {
+  background-color: #e2f2e2;
+  color: #2b6c4a;
+  border-color: #c5e3c5;
+}
+
+.tocListItem.active .tocLink {
+  background-color: #d4f5e1;
+  color: #007A3E;
+  font-weight: 600;
+  border-color: #a8d5a8;
+}
+
+.tocListItem.active .tocLink::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 70%;
+  background-color: #007A3E;
+  border-radius: 0 2px 2px 0;
+}
+
+/* TOC Nested Indentation */
+.tocListItem.ml2 { padding-left: 1rem; }
+.tocListItem.ml4 { padding-left: 1.5rem; }
+.tocListItem.ml6 { padding-left: 2rem; }
+.tocListItem.ml8 { padding-left: 2.5rem; }
+
+/* TOC Scrollbar */
+.tocNav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tocNav::-webkit-scrollbar-track {
+  background: #f0f9f0;
+}
+
+.tocNav::-webkit-scrollbar-thumb {
+  background-color: #a8d5a8;
+  border-radius: 3px;
+}
+
+.tocNav::-webkit-scrollbar-thumb:hover {
+  background-color: #7fb37f;
+}
+
+/* Heading Scroll Margin */
+.article h1,
+.article h2,
+.article h3,
+.article h4,
+.article h5,
+.article h6 {
+  scroll-margin-top: 100px;
+}
+
+/* WordPress Button Styles */
+.article .wp-block-button {
+  margin: 1.5rem 0 !important;
+}
+
+.article .wp-block-button__link,
+.article .wp-element-button {
+  background-color: #38a169 !important;
+  color: white !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.5rem !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  display: inline-block !important;
+  transition: all 0.3s ease !important;
+  border: 2px solid #38a169 !important;
+}
+
+.article .wp-block-button__link:hover,
+.article .wp-element-button:hover {
+  background-color: #2f855a !important;
+  border-color: #2f855a !important;
+  color: white !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(56, 161, 105, 0.3) !important;
+}

@@ -19,6 +19,7 @@ type Article = {
 type Props = {
   article: Article;
   slug: string;
+  relatedPosts?: any[];
 };
 
 type TOCItem = {
@@ -28,7 +29,7 @@ type TOCItem = {
   children: TOCItem[];
 };
 
-export default function ArticleClient({ article }: Props) {
+export default function ArticleClient({ article, relatedPosts = [] }: Props) {
   const [toc, setToc] = useState<TOCItem[]>([]);
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
 
@@ -128,13 +129,13 @@ export default function ArticleClient({ article }: Props) {
       </div>
 
       {/* Featured Image */}
-      <div className="bg-white pt-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="bg-white pt-8">
+        <div className="max-w-4xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative h-64 md:h-96 rounded-lg overflow-hidden"
+            className="relative h-64 md:h-80 rounded-lg overflow-hidden shadow-lg"
           >
             <Image
               src={article.image}
@@ -148,27 +149,29 @@ export default function ArticleClient({ article }: Props) {
 
       {/* Article Content with TOC */}
       <div className="bg-white pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+        <div className="max-w-7xl mx-auto px-6 pt-12">
           <div className="flex gap-8">
             {/* Table of Contents */}
             {toc.length > 0 && (
-              <div className="w-64 flex-shrink-0">
-                <div className="sticky top-8">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Table of Contents</h3>
-                  <div className="bg-gray-50 rounded-lg p-4">
+              <div className="w-80 flex-shrink-0">
+                <div className="bg-slate-50 rounded-lg p-6 sticky top-20 max-h-[calc(100vh-100px)] overflow-y-auto border border-slate-200 shadow-sm">
+                  <h3 className="text-sm font-semibold text-[#2B4257] uppercase tracking-wide mb-4 pb-3 border-b-2 border-slate-200">
+                    Table of Contents
+                  </h3>
+                  <div className="space-y-2">
                     {toc.map((item) => (
-                      <div key={item.id} className="mb-2">
+                      <div key={item.id}>
                         <div className="flex items-center justify-between">
                           <button
                             onClick={() => scrollToHeading(item.id)}
-                            className="text-sm font-medium text-gray-700 hover:text-[#2B4257] transition-colors flex-1 text-left"
+                            className="text-sm font-medium text-[#2B4257] hover:text-[#1a2834] hover:bg-slate-100 transition-all duration-200 flex-1 text-left p-3 rounded border border-transparent hover:border-slate-300 relative"
                           >
                             {item.text}
                           </button>
                           {item.children.length > 0 && (
                             <button
                               onClick={() => toggleExpanded(item.id)}
-                              className="ml-2 p-1 hover:bg-gray-200 rounded"
+                              className="ml-2 p-2 hover:bg-slate-100 rounded text-[#2B4257] hover:text-[#1a2834] transition-all duration-200 min-w-[1.5rem] h-6 flex items-center justify-center"
                             >
                               {expandedItems.has(item.id) ? (
                                 <Minus className="w-3 h-3" />
@@ -179,12 +182,12 @@ export default function ArticleClient({ article }: Props) {
                           )}
                         </div>
                         {expandedItems.has(item.id) && item.children.length > 0 && (
-                          <div className="ml-4 mt-2 space-y-1">
+                          <div className="ml-3 mt-2 space-y-1 border-l-2 border-slate-200 pl-3">
                             {item.children.map((child) => (
                               <button
                                 key={child.id}
                                 onClick={() => scrollToHeading(child.id)}
-                                className="block text-xs text-gray-600 hover:text-[#2B4257] transition-colors"
+                                className="block text-xs text-slate-600 hover:text-[#2B4257] hover:bg-slate-100 transition-all duration-200 p-2 rounded w-full text-left"
                               >
                                 {child.text}
                               </button>
@@ -199,18 +202,23 @@ export default function ArticleClient({ article }: Props) {
             )}
             
             {/* Article Content */}
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="prose prose-lg max-w-none"
+                className="article-content"
+                style={{
+                  fontSize: '1rem',
+                  lineHeight: '1.6',
+                  color: '#333'
+                }}
                 dangerouslySetInnerHTML={{ 
                   __html: article.content.replace(
                     /<(h[23])([^>]*)>/g, 
                     (match, tag, attrs, offset) => {
                       const index = (article.content.substring(0, offset).match(/<h[23]/g) || []).length;
-                      return `<${tag} id="heading-${index}"${attrs}>`;
+                      return `<${tag} id="heading-${index}" style="scroll-margin-top: 100px;"${attrs}>`;
                     }
                   )
                 }}
@@ -221,54 +229,48 @@ export default function ArticleClient({ article }: Props) {
       </div>
 
       {/* Related Articles */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8">Related Insights</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Link href="/insights/aluminum-vs-stainless-steel-railings" className="group">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="relative h-48">
-                  <Image
-                    src="/Images/Gallary/railing-3-lg.jpg"
-                    alt="Aluminum vs Stainless Steel"
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6">
-                  <h4 className="font-semibold text-gray-900 mb-2">
-                    Aluminum vs Stainless Steel Railings
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    Compare materials for your next project
-                  </p>
-                </div>
-              </div>
-            </Link>
-            
-            <Link href="/insights/door-hardware-maintenance-tips" className="group">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="relative h-48">
-                  <Image
-                    src="/Images/Gallary/door-hardware-1.jpg"
-                    alt="Door Hardware Maintenance"
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6">
-                  <h4 className="font-semibold text-gray-900 mb-2">
-                    Door Hardware Maintenance Tips
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    Keep your hardware in perfect condition
-                  </p>
-                </div>
-              </div>
-            </Link>
+      {relatedPosts.length > 0 && (
+        <div className="bg-gray-50 py-16">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-8">Related {article.category} Articles</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {relatedPosts.slice(0, 2).map((post) => {
+                const cleanTitle = post.title.rendered.replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"');
+                const cleanExcerpt = post.excerpt.rendered.replace(/<[^>]*>/g, '').replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"').replace(/\[&hellip;\]/g, '...').substring(0, 120);
+                const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/Images/Gallary/Hardware-1.jpg';
+                
+                return (
+                  <Link key={post.id} href={`/insights/${post.slug}`} className="group">
+                    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                      <div className="relative h-48">
+                        <Image
+                          src={image}
+                          alt={cleanTitle}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                          <span>{new Date(post.date).toLocaleDateString()}</span>
+                          <span>•</span>
+                          <span>5 min read</span>
+                        </div>
+                        <h4 className="font-semibold text-gray-900 mb-3 line-clamp-2 hover:text-[#2B4257] transition-colors">
+                          {cleanTitle}
+                        </h4>
+                        <p className="text-gray-600 text-sm line-clamp-3">
+                          {cleanExcerpt}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

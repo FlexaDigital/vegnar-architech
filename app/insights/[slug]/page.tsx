@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 async function fetchPost(slug: string) {
   try {
     const res = await fetch(`https://cms-arch.flexadigital.com/wp-json/wp/v2/posts?slug=${slug}&_embed`, {
-      next: { revalidate: 3600 }
+      next: { revalidate: 60 }
     });
     if (!res.ok) return null;
     const posts = await res.json();
@@ -105,17 +105,26 @@ export default async function ArticlePage({ params }: Props) {
     notFound();
   }
 
-  // Fetch category name
+  // Fetch category name and related posts
   const categoryId = post.categories[0];
   let categoryName = 'Insights';
+  let relatedPosts = [];
   if (categoryId) {
     try {
       const catRes = await fetch(`https://cms-arch.flexadigital.com/wp-json/wp/v2/categories/${categoryId}`, {
-        next: { revalidate: 3600 }
+        next: { revalidate: 300 }
       });
       if (catRes.ok) {
         const category = await catRes.json();
         categoryName = category.name;
+        
+        // Fetch related posts from same category
+        const relatedRes = await fetch(`https://cms-arch.flexadigital.com/wp-json/wp/v2/posts?categories=${categoryId}&exclude=${post.id}&per_page=2&_embed`, {
+          next: { revalidate: 300 }
+        });
+        if (relatedRes.ok) {
+          relatedPosts = await relatedRes.json();
+        }
       }
     } catch {}
   }
@@ -130,5 +139,5 @@ export default async function ArticlePage({ params }: Props) {
     content: post.content.rendered
   };
 
-  return <ArticleClient article={article} slug={params.slug} />;
+  return <ArticleClient article={article} slug={params.slug} relatedPosts={relatedPosts} />;
 }

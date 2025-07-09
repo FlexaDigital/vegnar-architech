@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 async function fetchPosts() {
   try {
     const res = await fetch('https://cms-arch.flexadigital.com/wp-json/wp/v2/posts?_embed', {
-      next: { revalidate: 3600 }
+      next: { revalidate: 60 }
     });
     if (!res.ok) return [];
     return await res.json();
@@ -37,7 +37,7 @@ async function fetchPosts() {
 async function fetchFeaturedPosts() {
   try {
     const res = await fetch('https://cms-arch.flexadigital.com/wp-json/wp/v2/posts?categories=55&_embed', {
-      next: { revalidate: 3600 }
+      next: { revalidate: 60 }
     });
     if (!res.ok) return [];
     return await res.json();
@@ -49,7 +49,7 @@ async function fetchFeaturedPosts() {
 async function fetchCategories() {
   try {
     const res = await fetch('https://cms-arch.flexadigital.com/wp-json/wp/v2/categories', {
-      next: { revalidate: 3600 }
+      next: { revalidate: 300 }
     });
     if (!res.ok) return [];
     return await res.json();
