@@ -213,16 +213,22 @@
   color: #374151;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .article-content .wp-block-media-text,
   .article-content .wp-block-media-text.has-media-on-the-right {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 1.5rem;
     padding: 1.5rem;
   }
   
   .article-content .wp-block-media-text.has-media-on-the-right .wp-block-media-text__media {
     order: -1;
+  }
+  
+  .article-content .wp-block-media-text__media img {
+    max-height: 300px;
+    object-fit: cover;
   }
 }
 

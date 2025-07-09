@@ -28,56 +28,56 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  // Fetch SEO metadata from custom API
+  let seoData = null;
+  try {
+    const seoRes = await fetch(`https://cms-arch.flexadigital.com/wp-json/custom/v1/seo/${post.id}`, {
+      next: { revalidate: 300 }
+    });
+    if (seoRes.ok) {
+      seoData = await seoRes.json();
+    }
+  } catch {}
+
   const cleanTitle = post.title.rendered.replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"');
   const cleanDescription = post.excerpt.rendered.replace(/<[^>]*>/g, '').replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"').replace(/\[&hellip;\]/g, '...').substring(0, 160);
   const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
   const publishDate = new Date(post.date).toISOString();
   const modifiedDate = new Date(post.modified).toISOString();
 
-  // Get category name
-  let categoryName = 'Insights';
-  if (post.categories && post.categories.length > 0) {
-    try {
-      const catRes = await fetch(`https://cms-arch.flexadigital.com/wp-json/wp/v2/categories/${post.categories[0]}`, {
-        next: { revalidate: 3600 }
-      });
-      if (catRes.ok) {
-        const category = await catRes.json();
-        categoryName = category.name;
-      }
-    } catch {}
-  }
+  // Use SEO data if available, otherwise fallback to defaults
+  const title = seoData?.seo_title || `${cleanTitle} | Vegnar Insights`;
+  const description = seoData?.seo_description || cleanDescription;
+  const keywords = seoData?.seo_keywords || `architectural hardware, ${cleanTitle.toLowerCase()}, railing systems, door hardware, glass fittings, Vegnar`;
 
   return {
-    title: `${cleanTitle} | Vegnar Insights`,
-    description: cleanDescription,
-    keywords: `${categoryName.toLowerCase()}, architectural hardware, ${cleanTitle.toLowerCase()}, railing systems, door hardware, glass fittings, Vegnar`,
+    title,
+    description,
+    keywords,
     authors: [{ name: 'Vegnar Team' }],
     creator: 'Vegnar Architectural',
     publisher: 'Vegnar Architectural',
-    category: categoryName,
     openGraph: {
-      title: cleanTitle,
-      description: cleanDescription,
+      title: seoData?.seo_title || cleanTitle,
+      description: seoData?.seo_description || cleanDescription,
       url: `https://vegnararch.com/insights/${params.slug}`,
       siteName: 'Vegnar Architectural',
       type: 'article',
       publishedTime: publishDate,
       modifiedTime: modifiedDate,
       authors: ['Vegnar Team'],
-      section: categoryName,
-      tags: [categoryName, 'Architectural Hardware', 'Vegnar'],
+      tags: ['Architectural Hardware', 'Vegnar'],
       images: image ? [{
         url: image,
         width: 1200,
         height: 630,
-        alt: cleanTitle
+        alt: seoData?.seo_title || cleanTitle
       }] : [],
     },
     twitter: {
       card: 'summary_large_image',
-      title: cleanTitle,
-      description: cleanDescription,
+      title: seoData?.seo_title || cleanTitle,
+      description: seoData?.seo_description || cleanDescription,
       images: image ? [image] : [],
       creator: '@vegnar_india'
     },
