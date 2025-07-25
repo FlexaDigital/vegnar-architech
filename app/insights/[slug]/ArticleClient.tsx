@@ -109,9 +109,7 @@ export default function ArticleClient({ article, relatedPosts = [] }: Props) {
               {article.title}
             </h1>
             
-            <p className="text-xl text-white/90 mb-8">
-              {article.description}
-            </p>
+
 
             <div className="flex items-center justify-between border-t border-white/20 pt-6">
               <div className="flex items-center gap-4">

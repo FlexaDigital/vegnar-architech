@@ -9,7 +9,16 @@ import { useSection } from '../context/SectionContext';
 const menuItems = [
   { name: 'Home', href: '/' },
   { name: 'Products', href: '/products' },
-  { name: 'About', href: '/about' },
+  { 
+    name: 'Company', 
+    href: '#',
+    dropdown: [
+      { name: 'About', href: '/about' },
+      { name: 'Mission & Vision', href: '/our-mission-vision' },
+      { name: 'Exports', href: '/exports' }
+    ]
+  },
+  { name: 'Partner', href: '/partner' },
   { name: 'Insights', href: '/insights' },
   { name: 'E-Catalogs', href: '/catalogs' }
 ];
@@ -17,6 +26,7 @@ const menuItems = [
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const { currentSection } = useSection();
 
   // Use vanilla JS for scroll handling
@@ -58,18 +68,51 @@ export default function Header() {
               {/* Desktop Navigation */}
               <nav className="hidden md:flex items-center space-x-8">
                 {menuItems.map((item) => (
-                  <motion.div
-                    key={item.name}
-                    whileHover={{ y: -2 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Link
-                      href={item.href}
-                      className="text-white/90 hover:text-white font-medium transition-colors"
-                    >
-                      {item.name}
-                    </Link>
-                  </motion.div>
+                  <div key={item.name} className="relative">
+                    {item.dropdown ? (
+                      <div
+                        onMouseEnter={() => setOpenDropdown(item.name)}
+                        onMouseLeave={() => setOpenDropdown(null)}
+                        className="relative"
+                      >
+                        <button className="text-white/90 hover:text-white font-medium transition-colors flex items-center gap-1">
+                          {item.name}
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                        {openDropdown === item.name && (
+                          <div 
+                            className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg py-2 z-50"
+                            onMouseEnter={() => setOpenDropdown(item.name)}
+                            onMouseLeave={() => setOpenDropdown(null)}
+                          >
+                            {item.dropdown.map((dropItem) => (
+                              <Link
+                                key={dropItem.name}
+                                href={dropItem.href}
+                                className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+                              >
+                                {dropItem.name}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <motion.div
+                        whileHover={{ y: -2 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <Link
+                          href={item.href}
+                          className="text-white/90 hover:text-white font-medium transition-colors"
+                        >
+                          {item.name}
+                        </Link>
+                      </motion.div>
+                    )}
+                  </div>
                 ))}
                 <Link href="/contact" passHref>
                   <motion.button
@@ -130,13 +173,29 @@ export default function Header() {
                     }}
                     transition={{ duration: 0.2, delay: index * 0.1 }}
                   >
-                    <Link
-                      href={item.href}
-                      className="block px-4 py-2 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
+                    {item.dropdown ? (
+                      <div>
+                        <div className="px-4 py-2 text-white/90 font-medium">{item.name}</div>
+                        {item.dropdown.map((dropItem) => (
+                          <Link
+                            key={dropItem.name}
+                            href={dropItem.href}
+                            className="block px-8 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {dropItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="block px-4 py-2 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
                   </motion.div>
                 ))}
                 <Link href="/contact" passHref>

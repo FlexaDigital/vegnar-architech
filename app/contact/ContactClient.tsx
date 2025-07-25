@@ -46,18 +46,38 @@ const ContactClient = () => {
       <Toaster position="top-right" />
 
       {/* Hero Section */}
-      <div className="bg-[#2B4257] text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="bg-gradient-to-br from-[#2B4257] via-[#1a2834] to-[#2B4257] text-white py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/Images/pattern.svg')] opacity-10"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
-              We're here to help and answer any questions you might have.
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full text-white/90 text-sm font-medium mb-6">
+              📞 Get In Touch
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Contact <span className="text-[#A7C7E7]">Us</span>
+            </h1>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
+              We're here to help and answer any questions you might have. Our expert team is ready to assist you with all your architectural hardware needs.
             </p>
+            <div className="flex flex-wrap justify-center gap-8 text-center">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 min-w-[120px]">
+                <div className="text-2xl font-bold">24/7</div>
+                <div className="text-white/80 text-sm">Support</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 min-w-[120px]">
+                <div className="text-2xl font-bold">Expert</div>
+                <div className="text-white/80 text-sm">Team</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 min-w-[120px]">
+                <div className="text-2xl font-bold">Quick</div>
+                <div className="text-white/80 text-sm">Response</div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

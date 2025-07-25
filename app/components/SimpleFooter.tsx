@@ -46,9 +46,16 @@ export default function SimpleFooter() {
     <footer className="bg-gray-900 text-white">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Column */}
           <div>
+            <div className="relative w-40 h-12 mb-4">
+              <img
+                src="/vegnar-architectural-logo.png"
+                alt="Vegnar Architectural"
+                className="h-12 w-auto object-contain brightness-0 invert"
+              />
+            </div>
             <p className="text-gray-400 mb-6 max-w-md">
               Leading provider of premium architectural hardware solutions, transforming spaces with innovation and excellence since 2003.
             </p>
@@ -69,6 +76,15 @@ export default function SimpleFooter() {
               <li><Link href="/" className="text-gray-400 hover:text-white">Home</Link></li>
               <li><Link href="/products" className="text-gray-400 hover:text-white">Products</Link></li>
               <li><Link href="/about" className="text-gray-400 hover:text-white">About</Link></li>
+              <li><Link href="/exports" className="text-gray-400 hover:text-white">Exports</Link></li>
+            </ul>
+          </div>
+
+          {/* Additional Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4">More</h3>
+            <ul className="space-y-3">
+              <li><Link href="/partner" className="text-gray-400 hover:text-white">Partner</Link></li>
               <li><Link href="/insights" className="text-gray-400 hover:text-white">Insights</Link></li>
               <li><Link href="/contact" className="text-gray-400 hover:text-white">Contact</Link></li>
               <li><Link href="/catalogs" className="text-gray-400 hover:text-white">E-Catalog</Link></li>
