@@ -33,8 +33,8 @@ type Props = {
 
 function formatPost(post: WordPressPost, categories: WordPressCategory[]) {
   const postCategory = categories.find(cat => post.categories.includes(cat.id));
-  const cleanTitle = post.title.rendered.replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"');
-  const cleanExcerpt = post.excerpt.rendered.replace(/<[^>]*>/g, '').replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"').replace(/\[&hellip;\]/g, '...').substring(0, 150) + '...';
+  const cleanTitle = post.title.rendered.replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"').replace(/&amp;/g, '&');
+  const cleanExcerpt = post.excerpt.rendered.replace(/<[^>]*>/g, '').replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"').replace(/&amp;/g, '&').replace(/\[&hellip;\]/g, '...').substring(0, 150) + '...';
   
   return {
     id: post.slug,

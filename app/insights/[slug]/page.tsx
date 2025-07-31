@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   } catch {}
 
-  const cleanTitle = post.title.rendered.replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"');
+  const cleanTitle = post.title.rendered.replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"').replace(/&amp;/g, '&');
   const cleanDescription = post.excerpt.rendered.replace(/<[^>]*>/g, '').replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"').replace(/\[&hellip;\]/g, '...').substring(0, 160);
   const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
   const publishDate = new Date(post.date).toISOString();
@@ -130,7 +130,7 @@ export default async function ArticlePage({ params }: Props) {
   }
 
   const article = {
-    title: post.title.rendered.replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"'),
+    title: post.title.rendered.replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"').replace(/&amp;/g, '&'),
     description: post.excerpt.rendered.replace(/<[^>]*>/g, '').replace(/&#8217;/g, "'").replace(/&#8211;/g, "-").replace(/&#8220;/g, '"').replace(/&#8221;/g, '"').replace(/\[&hellip;\]/g, '...').substring(0, 200),
     category: categoryName,
     date: post.date,

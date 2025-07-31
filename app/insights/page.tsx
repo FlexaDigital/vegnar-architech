@@ -2,12 +2,12 @@ import InsightsClient from './InsightsClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Architectural Hardware Insights | Expert Tips & Industry Trends | Vegnar',
-  description: 'Discover expert insights on architectural hardware, railing systems, door hardware, and glass fittings. Latest trends, installation tips, and design ideas from Vegnar professionals.',
-  keywords: 'architectural hardware insights, railing system tips, door hardware guide, glass fittings installation, hardware design trends, architectural solutions, Vegnar insights',
+  title: 'Smart Architectural Hardware Insights 2024 | Expert Tips & Future Trends | Vegnar',
+  description: 'Discover expert insights on smart architectural hardware, sustainable railing systems, IoT door hardware, and energy-efficient glass fittings. Latest 2024 trends, smart installation tips, and innovative design ideas from Vegnar professionals.',
+  keywords: 'smart architectural hardware insights 2024, sustainable railing system tips, IoT door hardware guide, energy efficient glass fittings installation, smart hardware design trends, green building solutions, architectural automation, smart building insights, future hardware trends, sustainable construction materials, Vegnar insights',
   openGraph: {
-    title: 'Architectural Hardware Insights | Expert Tips & Trends',
-    description: 'Expert insights on architectural hardware, design trends, and installation tips from industry professionals.',
+    title: 'Smart Architectural Hardware Insights 2024 | Expert Tips & Future Trends',
+    description: 'Expert insights on smart architectural hardware, sustainable design trends, and IoT installation tips from industry professionals.',
     url: 'https://vegnararch.com/insights',
     siteName: 'Vegnar Architectural',
     type: 'website',

@@ -83,7 +83,7 @@ export default function Header() {
                         </button>
                         {openDropdown === item.name && (
                           <div 
-                            className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg py-2 z-50"
+                            className="absolute top-full left-0 w-48 bg-white rounded-lg shadow-lg py-2 z-50"
                             onMouseEnter={() => setOpenDropdown(item.name)}
                             onMouseLeave={() => setOpenDropdown(null)}
                           >

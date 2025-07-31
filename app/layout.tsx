@@ -15,11 +15,11 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Vegnar Architectural Hardware | Premium Modern Solutions',
+    default: 'Vegnar Smart Architectural Hardware | Premium Modern Solutions 2024',
     template: '%s | Vegnar Architectural'
   },
-  description: 'Leading manufacturer of premium architectural hardware including railing systems, door hardware, window hardware, and glass fittings. Quality solutions for modern spaces.',
-  keywords: 'architectural hardware, railing systems, door hardware, window hardware, glass fittings, aluminum railings, stainless steel railings, Vegnar, architectural solutions',
+  description: 'Leading manufacturer of smart architectural hardware including IoT railing systems, automated door hardware, energy-efficient window hardware, and sustainable glass fittings. Premium quality solutions for modern smart buildings.',
+  keywords: 'smart architectural hardware 2024, IoT railing systems, automated door hardware, energy efficient window hardware, sustainable glass fittings, aluminum railings, stainless steel railings, Vegnar, smart architectural solutions, green building materials, IoT compatible hardware, smart building automation, sustainable construction hardware',
   authors: [{ name: 'Vegnar Architectural' }],
   creator: 'Vegnar Architectural',
   publisher: 'Vegnar Architectural',
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://vegnararch.com',
     siteName: 'Vegnar Architectural',
-    title: 'Vegnar Architectural Hardware | Premium Modern Solutions',
-    description: 'Leading manufacturer of premium architectural hardware including railing systems, door hardware, and glass fittings.',
+    title: 'Vegnar Smart Architectural Hardware | Premium Modern Solutions 2024',
+    description: 'Leading manufacturer of smart architectural hardware including IoT railing systems, automated door hardware, and sustainable glass fittings.',
     images: [
       {
         url: 'https://vegnararch.com/images/og-image.jpg',
@@ -83,7 +83,11 @@ export default function RootLayout({
               name: 'Vegnar Architectural',
               url: 'https://vegnararch.com',
               logo: 'https://vegnararch.com/vegnar-architectural-logo.png',
-              description: 'Leading manufacturer of premium architectural hardware including railing systems, door hardware, and glass fittings.',
+              description: 'Leading manufacturer of smart architectural hardware including IoT railing systems, automated door hardware, and sustainable glass fittings.',
+              foundingDate: '2000',
+              industry: 'Architectural Hardware Manufacturing',
+              numberOfEmployees: '50-100',
+              slogan: 'Premium Smart Hardware Solutions for Modern Buildings',
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: '256, Jasal Complex Nanavati Chowk, 150 Feet Ring Rd, above Axis bank',

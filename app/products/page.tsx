@@ -2,12 +2,12 @@ import ProductsClient from './ProductsClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Architectural Hardware Products | Railing Systems, Door Hardware & Glass Fittings',
-  description: 'Explore Vegnar\'s complete range of architectural hardware products including aluminum railing systems, stainless steel railings, door hardware, window hardware, and glass fittings.',
-  keywords: 'architectural hardware products, railing systems, door hardware, window hardware, glass fittings, aluminum railings, stainless steel railings, pull handles, door hinges, mortice handles, architectural hardware catalog',
+  title: 'Smart Architectural Hardware Products 2024 | Modern Railing Systems & IoT Door Hardware',
+  description: 'Explore Vegnar\'s complete range of smart architectural hardware products including sustainable aluminum railing systems, energy-efficient stainless steel railings, IoT-compatible door hardware, smart window hardware, and contemporary glass fittings for modern buildings.',
+  keywords: 'smart architectural hardware products 2024, modern railing systems, IoT door hardware, energy efficient window hardware, sustainable glass fittings, aluminum railings, stainless steel railings, smart pull handles, automated door hinges, digital mortice handles, contemporary hardware catalog, green building hardware, smart building solutions, architectural hardware trends 2024',
   openGraph: {
-    title: 'Premium Architectural Hardware Products | Vegnar Collection',
-    description: 'Browse our extensive collection of architectural hardware products. Quality railing systems, door hardware, and glass fittings for modern spaces.',
+    title: 'Smart Architectural Hardware Products 2024 | Vegnar Collection',
+    description: 'Browse our extensive collection of smart architectural hardware products. Sustainable railing systems, IoT door hardware, and energy-efficient glass fittings for contemporary spaces.',
     url: 'https://vegnararch.com/products',
     siteName: 'Vegnar Architectural',
     type: 'website',

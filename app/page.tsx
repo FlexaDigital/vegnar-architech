@@ -51,12 +51,12 @@ import PartnerCTA from './components/PartnerCTA';
 import ProductGallery from './components/ProductGallery';
 
 export const metadata: Metadata = {
-  title: 'Vegnar Architectural Hardware | Premium Modern Solutions',
-  description: 'Leading manufacturer of premium architectural hardware including railing systems, door hardware, window hardware, and glass fittings. Quality solutions for modern spaces in India.',
-  keywords: 'architectural hardware manufacturer, railing systems India, door hardware, window hardware, glass fittings, aluminum railings, stainless steel railings, premium hardware solutions, Vegnar architectural',
+  title: 'Architectural Hardware, Bathroom Accessories & Railing Systems – Vegnar Architectural',
+  description: 'Explore premium architectural hardware, bathroom accessories, pull handles, mortice locks, glass fittings, railing systems & digital safes by Vegnar.',
+  keywords: 'architectural hardware, bathroom accessories, railing systems, pull handles, mortice locks, door hinges, window hinges, glass fittings, digital safes for home and office, stainless steel pull handles, modern bathroom hardware sets, balcony railing hardware, concealed glass door hinges, mortice handle with lock set, furniture hardware fittings, night latches for wooden doors, architectural hardware manufacturer India, bathroom accessories supplier Gujarat, railing system exporter from India, Vegnar Architectural products',
   openGraph: {
-    title: 'Vegnar Architectural Hardware | Premium Modern Solutions',
-    description: 'Leading manufacturer of premium architectural hardware. Quality railing systems, door hardware, and glass fittings for modern spaces.',
+    title: 'Architectural Hardware, Bathroom Accessories & Railing Systems – Vegnar Architectural',
+    description: 'Explore premium architectural hardware, bathroom accessories, pull handles, mortice locks, glass fittings, railing systems & digital safes by Vegnar.',
     url: 'https://vegnararch.com',
     siteName: 'Vegnar Architectural',
     type: 'website',
@@ -71,8 +71,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vegnar Architectural Hardware | Premium Solutions',
-    description: 'Premium architectural hardware manufacturer. Railing systems, door hardware, and glass fittings.',
+    title: 'Architectural Hardware, Bathroom Accessories & Railing Systems – Vegnar',
+    description: 'Premium architectural hardware, bathroom accessories, pull handles, mortice locks, glass fittings & digital safes.',
   },
   alternates: {
     canonical: 'https://vegnararch.com',
