@@ -72,12 +72,12 @@ export async function GET(): Promise<Response> {
     },
   ];
 
-  const blogPosts = posts.map((post: any) => ({
+  const blogPosts = posts.length > 0 ? posts.map((post: any) => ({
     url: `https://vegnararch.com/insights/${post.slug}`,
-    lastModified: new Date(post.modified),
+    lastModified: new Date(post.modified || post.date),
     changeFrequency: 'weekly' as const,
     priority: 0.6,
-  }));
+  })) : [];
 
   const allUrls = [...staticPages, ...blogPosts];
 
