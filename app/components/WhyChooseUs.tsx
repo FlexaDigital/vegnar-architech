@@ -54,7 +54,7 @@ export default function WhyChooseUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Why Choose Us
+            Why Choose Vegnar Architectural Hardware
           </motion.h2>
           <motion.p
             className="text-lg text-white/80"
@@ -63,7 +63,7 @@ export default function WhyChooseUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            We are able to provide maximum satisfaction to the customers by offering them a superior range of products.
+            We provide maximum satisfaction with our superior range of architectural hardware, bathroom accessories, pull handles, mortice locks, and digital safes.
           </motion.p>
         </div>
 

@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const productImages = [
-  { src: '/Images/Gallary/vg-lg-2.jpg', alt: 'Modern door handle' },
-  { src: '/Images/Gallary/railing-1-lg.jpg', alt: 'Glass partition system' },
-  { src: '/Images/Gallary/door-hardware-1.jpg', alt: 'Sliding door system' },
-  { src: '/Images/Gallary/railing-3-lg.jpg', alt: 'Architectural hardware' },
-  { src: '/Images/Gallary/railing-6-m.jpg', alt: 'Modern railing' },
-  { src: '/Images/Gallary/Glass-hardware-4.jpg', alt: 'Door closer' },
+  { src: '/Images/Gallary/vg-lg-2.jpg', alt: 'Stainless steel pull handles for modern doors' },
+  { src: '/Images/Gallary/railing-1-lg.jpg', alt: 'Glass fittings and balcony railing hardware' },
+  { src: '/Images/Gallary/door-hardware-1.jpg', alt: 'Mortice locks and door hardware fittings' },
+  { src: '/Images/Gallary/railing-3-lg.jpg', alt: 'Architectural hardware and railing systems' },
+  { src: '/Images/Gallary/railing-6-m.jpg', alt: 'Modern bathroom hardware sets and accessories' },
+  { src: '/Images/Gallary/Glass-hardware-4.jpg', alt: 'Concealed glass door hinges and window hinges' },
 ];
 
 const gridSpanClasses = [

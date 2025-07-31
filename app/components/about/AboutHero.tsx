@@ -25,14 +25,13 @@ export default function AboutHero() {
             className="max-w-2xl w-full text-center lg:text-left"
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
-              Crafting Excellence in
+              Leading Architectural Hardware
               <span className="block text-[#A7C7E7]">
-                Vegnar Architectural Solutions
+                Manufacturer from India
               </span>
             </h1>
             <p className="text-sm sm:text-base md:text-lg text-white/80 mb-8 leading-relaxed">
-              Since incorporation, we&apos;ve been at the forefront of architectural innovation,
-              delivering premium solutions that transform spaces and exceed expectations.
+              Since incorporation, we&apos;ve been manufacturing premium architectural hardware, bathroom accessories, pull handles, mortice locks, glass fittings, railing systems, and digital safes that transform spaces across India and globally.
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>

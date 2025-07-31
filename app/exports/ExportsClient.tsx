@@ -16,18 +16,18 @@ const countries = [
 
 const exportProducts = [
   {
-    name: 'Aluminum Glass Railings',
-    description: 'Premium quality railings for international projects',
+    name: 'Door Handles & Window Hinges Export to USA',
+    description: 'Premium door handles and window hinges export to USA, UK with DDP service',
     image: '/Images/Gallary/railing-1-lg.jpg'
   },
   {
-    name: 'Stainless Steel Hardware',
-    description: 'Corrosion-resistant hardware for global climates',
+    name: 'Digital Safes & Glass Fittings Export to Europe',
+    description: 'Digital safes for home and office, glass fittings export to Germany and Europe',
     image: '/Images/Gallary/Hardware-1.jpg'
   },
   {
-    name: 'Glass Fittings',
-    description: 'Precision-engineered glass mounting solutions',
+    name: 'Bathroom Accessories Export to UK',
+    description: 'Leading brand bathroom accessories and railing systems export to UK and Europe',
     image: '/Images/Gallary/glass-fitting-1.jpg'
   }
 ];
@@ -46,11 +46,10 @@ export default function ExportsClient() {
           >
             <Globe className="w-16 h-16 mx-auto mb-6 text-white" />
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Exporting Excellence Worldwide
+              Architectural Hardware Exporters in India
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
-              Vegnar Architectural delivers premium hardware solutions to over 25 countries, 
-              bringing Indian craftsmanship and innovation to global markets.
+              Vegnar Architectural - Leading architectural hardware exporters from India delivering premium furniture fittings, bathroom accessories, pull handles, and mortice locks with DDP export service to global markets.
             </p>
             <div className="flex flex-wrap justify-center gap-8 text-center">
               <div>
@@ -113,9 +112,9 @@ export default function ExportsClient() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Global Presence</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Exporting to USA, UK, Germany & Europe</h2>
             <p className="text-lg text-gray-600">
-              Our products are trusted by architects and builders worldwide
+              As a leading brand in architectural hardware products, our door handles, pull handles, mortice locks, window hinges, glass fittings, digital safes, and bathroom accessories are trusted by architects and builders in USA, UK, Germany, and across Europe
             </p>
           </motion.div>
 
@@ -146,9 +145,9 @@ export default function ExportsClient() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Export Product Range</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Leading Brand in Architectural Hardware Products Export</h2>
             <p className="text-lg text-gray-600">
-              Premium architectural hardware designed for global markets
+              As a leading brand in architectural hardware products, we export premium door handles, window hinges, glass fittings, digital safes, railing systems, and bathroom accessories to USA, UK, Germany, and Europe
             </p>
           </motion.div>
 
@@ -188,9 +187,9 @@ export default function ExportsClient() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4">Why Choose Vegnar for Architectural Hardware?</h2>
+            <h2 className="text-3xl font-bold mb-4">Leading Brand in Architectural Hardware Export to USA & Europe</h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              We combine Indian manufacturing excellence with international quality standards
+              We are a leading brand in architectural hardware products, combining Indian manufacturing excellence with international quality standards for door handles, window hinges, glass fittings, and digital safes export to USA, UK, Germany, and Europe
             </p>
           </motion.div>
 

@@ -23,9 +23,9 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="block mb-2">Innovative Architectural Solutions</span>
+          <span className="block mb-2">Premium Architectural Hardware</span>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-white/80 to-white">
-            for Modern Spaces
+            & Bathroom Accessories
           </span>
         </motion.h1>
 

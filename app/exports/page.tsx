@@ -2,12 +2,12 @@ import { Metadata } from 'next';
 import ExportsClient from './ExportsClient';
 
 export const metadata: Metadata = {
-  title: 'Global Smart Hardware Exports 2024 | Vegnar Architectural Hardware Worldwide',
-  description: 'Vegnar exports premium smart architectural hardware globally. Discover our international presence, sustainable export capabilities, and eco-friendly quality products shipped worldwide including IoT railings, smart door hardware, and energy-efficient glass fittings.',
-  keywords: 'smart architectural hardware exports 2024, global sustainable shipping, international IoT hardware supplier, worldwide eco-friendly delivery, export quality smart products, Vegnar exports, smart architectural hardware worldwide, international green trade, sustainable building materials export, IoT hardware global supplier',
+  title: 'Exporter of Glass Hardware Fittings, Stainless Steel & Aluminium Railing System',
+  description: 'Leading brand in architectural hardware products exporting door handles, window hinges, glass fittings, digital safes & bathroom accessories to USA, UK, Germany & Europe with DDP service.',
+  keywords: 'architectural hardware export USA UK Europe, door handles exporter, window hinges export, glass fittings supplier, digital safes export, bathroom accessories exporter, leading brand architectural hardware products, hardware exporters in india, furniture fittings exporter, DDP export service, architectural hardware exporters from India, railing systems export Germany',
   openGraph: {
-    title: 'Global Exports | Vegnar Architectural Hardware Worldwide',
-    description: 'Vegnar exports premium architectural hardware globally with quality products shipped worldwide.',
+    title: 'Exporters of Furniture Fittings & Hardware Fittings | Vegnar',
+    description: 'Explore Vegnar\'s export range of architectural hardware, railing systems, glass fittings & bathroom accessories. Global supply with DDP available.',
     url: 'https://vegnararch.com/exports',
     siteName: 'Vegnar Architectural',
     type: 'website',

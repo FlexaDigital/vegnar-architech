@@ -26,7 +26,7 @@ export default function AboutSection() {
             <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/Images/vegnar-about-us.jpg"
-                alt="Modern architectural solutions showcase"
+                alt="Architectural hardware manufacturer India - pull handles, mortice locks, bathroom accessories"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -49,15 +49,15 @@ export default function AboutSection() {
             className="relative"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-              Crafting Excellence with 
-              <span className="block text-[#2B4257]">Vegnar Architectural Solutions</span>
+              Leading Architectural Hardware Manufacturer 
+              <span className="block text-[#2B4257]">from India</span>
             </h2>
             
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-  Vegnar Architectural delivers unmatched expertise in innovative architectural hardware solutions. Our premium range of products is designed to transform spaces with elegance, functionality, and lasting durability.
+  Vegnar Architectural delivers unmatched expertise in architectural hardware, bathroom accessories, pull handles, mortice locks, and railing systems. Our premium range includes digital safes for home and office, modern bathroom hardware sets, and balcony railing hardware designed to transform spaces with elegance and functionality.
   </p>
    <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-As a trusted brand among architects, designers, and builders worldwide, Vegnar Architectural is committed to precision engineering, cutting-edge design, and superior quality. From concept to creation, every piece reflects our dedication to craftsmanship and innovation.
+As a trusted architectural hardware manufacturer India and bathroom accessories supplier Gujarat, Vegnar Architectural is committed to precision engineering, cutting-edge design, and superior quality. From door hinges to window hinges, every piece reflects our dedication to craftsmanship and innovation.
             </p>
 
             {/* Statistics Row */}

@@ -3,9 +3,9 @@ import AboutClient from './AboutClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Vegnar Architectural Hardware | Leading Smart Hardware Manufacturer Since 2000',
-  description: 'Learn about Vegnar Architectural Hardware - a pioneering manufacturer of smart railing systems, IoT door hardware, and sustainable glass fittings. Discover our mission, vision, and commitment to innovation and environmental responsibility.',
-  keywords: 'about Vegnar, smart architectural hardware manufacturer, Vegnar company history, sustainable railing system manufacturer, IoT door hardware company, eco-friendly glass fittings manufacturer, architectural hardware India, premium smart hardware solutions, green building materials manufacturer, sustainable construction hardware',
+  title: 'About Vegnar Architectural Hardware | Leading Manufacturer of Pull Handles & Bathroom Accessories',
+  description: 'Learn about Vegnar Architectural Hardware - a leading manufacturer of architectural hardware, bathroom accessories, stainless steel pull handles, mortice locks, glass fittings, railing systems, and digital safes from India.',
+  keywords: 'about Vegnar, architectural hardware manufacturer India, bathroom accessories supplier Gujarat, stainless steel pull handles manufacturer, mortice locks company, glass fittings manufacturer, railing system exporter from India, digital safes for home and office, door hinges manufacturer, window hinges supplier, furniture hardware fittings, night latches for wooden doors, Vegnar Architectural products',
   openGraph: {
     title: 'About Vegnar Architectural Hardware | Premium Quality Since Years',
     description: 'Discover Vegnar\'s journey as a leading architectural hardware manufacturer. Quality products, innovative solutions, and customer satisfaction.',

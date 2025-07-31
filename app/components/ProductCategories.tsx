@@ -19,23 +19,23 @@ interface ProductCategoriesProps {
 const defaultCategories = [
   {
     id: 1,
-    name: 'Aluminium Glass Railing System',
-    description: 'A modern, durable railing solution featuring sleek aluminum profiles and clear tempered glass—ideal for balconies, staircases, and terraces, offering safety without compromising the view.',
-    slug: 'door-hardware',
+    name: 'Stainless Steel Pull Handles',
+    description: 'Premium stainless steel pull handles and mortice handle with lock sets for modern doors, offering durability and contemporary design for residential and commercial spaces.',
+    slug: 'pull-handles',
     parent: 0
   },
   {
     id: 2,
     name: 'Glass Hardware Fittings',
-    description: 'Premium quality fittings designed for glass installations—ensuring secure, elegant mounting for doors, partitions, and balustrades.',
+    description: 'Concealed glass door hinges and premium glass fittings designed for modern installations—ensuring secure, elegant mounting for doors, partitions, and balustrades.',
     slug: 'glass-fittings',
     parent: 0
   },
   {
     id: 3,
-    name: 'Stainless Steel Railings',
-    description: 'Strong, corrosion-resistant railings with a sleek, modern finish—perfect for indoor and outdoor applications, combining safety with style.',
-    slug: 'railing-systems',
+    name: 'Bathroom Accessories & Digital Safes',
+    description: 'Modern bathroom hardware sets and digital safes for home and office, combining functionality with contemporary design for complete interior solutions.',
+    slug: 'bathroom-accessories',
     parent: 0
   }
 ];
@@ -52,7 +52,7 @@ export default function ProductCategories({ categories = defaultCategories }: Pr
       {/* Parallax Background Image */}
       <motion.img
         src="/Images/catagory-bg.jpg"
-        alt="Product background"
+        alt="Architectural hardware and bathroom accessories background"
         style={{ y: smoothY }}
         className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none z-0"
       />
@@ -68,7 +68,7 @@ export default function ProductCategories({ categories = defaultCategories }: Pr
           transition={{ duration: 0.6 }}
           className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 text-center"
         >
-          Our Product Categories
+          Premium Architectural Hardware & Bathroom Accessories
         </motion.h2>
 
         <motion.p
@@ -77,7 +77,7 @@ export default function ProductCategories({ categories = defaultCategories }: Pr
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-12"
         >
-          Explore our comprehensive range of architectural solutions
+          Explore our comprehensive range of pull handles, mortice locks, glass fittings, railing systems, and digital safes
         </motion.p>
 
         {/* Category Grid */}

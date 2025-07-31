@@ -52,7 +52,7 @@ export default function InsightsClient({ posts, categories, featuredPosts }: Pro
   const [selectedCategory, setSelectedCategory] = useState('All');
   const insights = posts.map(post => formatPost(post, categories));
   const featuredInsights = featuredPosts.map(post => formatPost(post, categories));
-  const categoryNames = ['All', ...categories.map(cat => cat.name)];
+  const categoryNames = ['All', ...categories.map(cat => cat.name.replace(/&amp;/g, '&'))];
   const allInsights = insights.filter(insight => !featuredPosts.some(fp => fp.slug === insight.id));
   const regularInsights = selectedCategory === 'All' 
     ? allInsights 
