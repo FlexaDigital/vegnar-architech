@@ -229,12 +229,8 @@ export default function ArticleClient({ article, relatedPosts = [] }: Props) {
                   {/* LinkedIn Company Card */}
                   <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-6">
                     <div className="flex items-center gap-4 mb-4">
-                      <div className="w-16 h-16 rounded-lg overflow-hidden">
-                        <img
-                          src="https://media.licdn.com/dms/image/v2/D4D0BAQGJRIALK97lHw/company-logo_200_200/B4DZdKR..1HkAI-/0/1749297918645/vegnar_architectural_products_logo?e=1757548800&v=beta&t=9dO6W8krXDLn4jATWKKCsa5t99m_qAAX4301qkmoCv8"
-                          alt="Vegnar Architectural Logo"
-                          className="w-full h-full object-cover"
-                        />
+                      <div className="w-16 h-16 rounded-lg overflow-hidden bg-[#2B4257] flex items-center justify-center">
+                        <span className="text-white font-bold text-xl">V</span>
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-900">Vegnar Architectural</h3>
@@ -328,7 +324,7 @@ export default function ArticleClient({ article, relatedPosts = [] }: Props) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="article-content"
+                className="article-content prose prose-lg max-w-none"
                 style={{
                   fontSize: '1rem',
                   lineHeight: '1.6',
