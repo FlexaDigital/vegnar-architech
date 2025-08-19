@@ -24,7 +24,7 @@ const achievements: Achievement[] = [
     description: 'Successfully delivered architectural solutions worldwide'
   },
   {
-    number: 50,
+    number: 29,
     suffix: '+',
     title: 'Countries Served',
     description: 'Global presence and international expertise'

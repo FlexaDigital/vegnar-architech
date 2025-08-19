@@ -43,7 +43,7 @@ export default function PartnerCTA() {
                 <div className="text-white/70 text-sm">Years of Excellence</div>
               </div>
               <div className="flex items-center gap-2">
-                <div className="text-3xl font-bold text-white">1000+</div>
+                <div className="text-3xl font-bold text-white">2000+</div>
                 <div className="text-white/70 text-sm">Projects Completed</div>
               </div>
             </div>

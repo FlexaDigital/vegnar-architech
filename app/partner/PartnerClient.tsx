@@ -65,7 +65,7 @@ export default function PartnerClient() {
                 <div className="text-gray-300">Distribution Network</div>
               </div>
               <div>
-                <div className="text-3xl font-bold">7+</div>
+                <div className="text-3xl font-bold">25+</div>
                 <div className="text-gray-300">International Markets</div>
               </div>
               <div>
@@ -142,7 +142,7 @@ export default function PartnerClient() {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/Images/Gallary/railing-1-lg.jpg"
+                  src="/Images/vegnararch-about-us.jpeg"
                   alt="Partnership Opportunities"
                   className="w-full h-[600px] object-cover"
                 />
