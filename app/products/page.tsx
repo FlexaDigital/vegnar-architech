@@ -1,4 +1,5 @@
 import ProductsClient from './ProductsClient';
+import ProductDetailClient from './ProductDetailClient';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -23,6 +24,9 @@ export const metadata: Metadata = {
 };
 
 
-export default function ProductsPage() {
+export default function ProductsPage({ searchParams }: { searchParams: { slug?: string; image?: string } }) {
+  if (searchParams.slug) {
+    return <ProductDetailClient slug={searchParams.slug} imageUrl={searchParams.image} />;
+  }
   return <ProductsClient />;
 }
