@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Logo from './Logo';
 import { useSection } from '../context/SectionContext';
+import { usePathname } from 'next/navigation';
 
 const menuItems = [
   { name: 'Home', href: '/' },
@@ -28,13 +29,17 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const { currentSection } = useSection();
+  const pathname = usePathname();
 
-  // Use vanilla JS for scroll handling
-  if (typeof window !== 'undefined') {
-    window.addEventListener('scroll', () => {
-      setIsScrolled(window.scrollY > 50);
-    });
-  }
+  // Setup scroll listener once and set initial state
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 50);
+    onScroll(); // initialize on mount
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const isHome = pathname === '/';
 
   return (
     <AnimatePresence>
@@ -50,12 +55,10 @@ export default function Header() {
           <motion.div
             className="absolute inset-0 transition-all duration-300"
             animate={{
-              backgroundColor: isMobileMenuOpen 
-                ? 'rgba(43, 66, 87, 0.95)' 
-                : isScrolled 
-                  ? 'rgba(43, 66, 87, 0.8)' 
-                  : 'rgba(43, 66, 87, 0)',
-              backdropFilter: isMobileMenuOpen || isScrolled ? 'blur(12px)' : 'blur(0px)'
+              backgroundColor: isMobileMenuOpen
+                ? 'rgba(43, 66, 87, 0.95)'
+                : (isHome ? (isScrolled ? 'rgba(43, 66, 87, 0.8)' : 'rgba(43, 66, 87, 0)') : 'rgba(43, 66, 87, 0.95)'),
+              backdropFilter: isMobileMenuOpen || isScrolled || !isHome ? 'blur(12px)' : 'blur(0px)'
             }}
           />
 
@@ -119,8 +122,8 @@ export default function Header() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className={`px-4 py-2 rounded-lg font-medium shadow-md transition-all duration-300 border ${
-                      isScrolled 
-                        ? 'bg-[#2B4257] text-white hover:bg-[#1a2834] border-white/20' 
+                      (isHome ? isScrolled : true)
+                        ? 'bg-[#2B4257] text-white hover:bg-[#1a2834] border-white/20'
                         : 'bg-white/10 text-white hover:bg-white/20 border-white/30'
                     }`}
                   >
@@ -203,8 +206,8 @@ export default function Header() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className={`px-4 py-2 rounded-lg font-medium shadow-md transition-all duration-300 border ${
-                      isScrolled 
-                        ? 'bg-[#2B4257] text-white hover:bg-[#1a2834] border-white/20' 
+                      (isHome ? isScrolled : true)
+                        ? 'bg-[#2B4257] text-white hover:bg-[#1a2834] border-white/20'
                         : 'bg-white/10 text-white hover:bg-white/20 border-white/30'
                     }`}
                   >

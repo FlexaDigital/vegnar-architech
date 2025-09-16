@@ -49,7 +49,7 @@ export default function ProductCategoriesPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(12);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -176,28 +176,6 @@ export default function ProductCategoriesPage() {
 
   return (
     <div className="products-page">
-      {/* Image Modal */}
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 bg-black/80 z-[60] flex items-center justify-center p-4 cursor-pointer"
-          >
-            <div className="max-w-4xl h-[80vh] w-full relative">
-              <Image
-                src={selectedImage}
-                alt="Selected Product"
-                fill
-                className="object-contain"
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Category Tabs */}
       <div className="category-tabs">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -413,17 +391,12 @@ export default function ProductCategoriesPage() {
               {/* Product Grid */}
               <div className="products-grid">
                 {currentProducts.map((product) => (
-                  <motion.div
-                    key={product.id}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="product-card"
-                    onClick={() => {
-                      if (product.featured_media && mediaItems[product.featured_media]) {
-                        setSelectedImage(mediaItems[product.featured_media]);
-                      }
-                    }}
+                  <Link href={`/products?slug=${product.slug}${product.featured_media && mediaItems[product.featured_media] ? `&image=${encodeURIComponent(mediaItems[product.featured_media])}` : ''}`} key={product.id} className="block">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5 }}
+                      className="product-card cursor-pointer hover:shadow-lg transition-shadow"
                   >
                     <div className="product-image-container" style={{ height: '260px', minHeight: '200px', position: 'relative' }}>
                       {product.featured_media && mediaItems[product.featured_media] ? (
@@ -474,7 +447,8 @@ export default function ProductCategoriesPage() {
                         )}
                       </div>
                     </div>
-                  </motion.div>
+                    </motion.div>
+                  </Link>
                 ))}
               </div>
             </div>

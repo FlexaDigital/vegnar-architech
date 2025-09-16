@@ -88,7 +88,7 @@ export default function InsightsClient({ posts, categories, featuredPosts }: Pro
                 className={`px-4 py-2 rounded-full border transition-colors ${
                   selectedCategory === category
                     ? 'border-[#2B4257] bg-[#2B4257] text-white'
-                    : 'border-gray-300 hover:border-[#2B4257] hover:text-[#2B4257]'
+                    : 'border-gray-300 text-gray-700 hover:border-[#2B4257] hover:text-[#2B4257] hover:bg-[#2B4257]/10'
                 }`}
               >
                 {category}
