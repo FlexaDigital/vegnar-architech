@@ -162,16 +162,16 @@ export default function ProductDetailClient({ slug, imageUrl }: { slug: string; 
               )}
             </div>
 
-            <div className="flex items-center space-x-4">
+            {/* <div className="flex items-center space-x-4">
               <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
                 ✓ In Stock
               </span>
               <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
                 ⚡ Fast Delivery
               </span>
-            </div>
+            </div> */}
 
-            <div className="bg-gradient-to-r from-[#2B4257] to-[#1a2834] text-white p-6 rounded-xl">
+            {/* <div className="bg-gradient-to-r from-[#2B4257] to-[#1a2834] text-white p-6 rounded-xl">
               <h3 className="text-xl font-semibold mb-2">Get Custom Quote</h3>
               <p className="text-blue-100 mb-4">Professional pricing based on your requirements</p>
               <div className="flex space-x-3">
@@ -182,40 +182,122 @@ export default function ProductDetailClient({ slug, imageUrl }: { slug: string; 
                   Call Expert
                 </button>
               </div>
-            </div>
+            </div> */}
 
-            {/* Product Details Tabs */}
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <div className="space-y-6">
-                {product?.acf?.specifications && (
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                      <span className="w-2 h-2 bg-[#2B4257] rounded-full mr-3"></span>
-                      Specifications
-                    </h3>
-                    <div className="text-gray-700 prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: product.acf.specifications }} />
+            {/* Product Details - Rich Sections with Fallbacks */}
+            <div className="bg-white rounded-xl shadow-lg p-6 space-y-10">
+              {/* Description / Features */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
+                  <span className="w-2 h-2 bg-[#2B4257] rounded-full mr-3"></span>
+                  Features
+                </h3>
+                {product?.acf?.features ? (
+                  <div className="text-gray-700 prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: product.acf.features }} />
+                ) : (
+                  <ul className="list-disc list-inside text-gray-700 space-y-1">
+                    <li>Heavy-duty construction suitable for high-traffic usage</li>
+                    <li>Precision engineered for smooth installation and stability</li>
+                    <li>Corrosion-resistant finish for long-lasting durability</li>
+                    <li>Elegant design that blends with modern interiors</li>
+                  </ul>
+                )}
+              </div>
+
+              {/* Specifications */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
+                  <span className="w-2 h-2 bg-[#2B4257] rounded-full mr-3"></span>
+                  Specifications
+                </h3>
+                {product?.acf?.specifications ? (
+                  <div className="text-gray-700 prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: product.acf.specifications }} />
+                ) : (
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full text-sm">
+                      <tbody className="divide-y divide-gray-200">
+                        <tr>
+                          <td className="py-3 pr-6 font-medium text-gray-900">Material</td>
+                          <td className="py-3 text-gray-700">Stainless Steel (Grade 304/316)</td>
+                        </tr>
+                        {/* <tr>
+                          <td className="py-3 pr-6 font-medium text-gray-900">Finish</td>
+                          <td className="py-3 text-gray-700">Satin / Mirror</td>
+                        </tr> */}
+                        <tr>
+                          <td className="py-3 pr-6 font-medium text-gray-900">Size</td>
+                          <td className="py-3 text-gray-700">132 mm (Bracket Cover System)</td>
+                        </tr>
+                        <tr>
+                          <td className="py-3 pr-6 font-medium text-gray-900">Application</td>
+                          <td className="py-3 text-gray-700">Handrail / Railing Systems</td>
+                        </tr>
+                        <tr>
+                          <td className="py-3 pr-6 font-medium text-gray-900">Mount Type</td>
+                          <td className="py-3 text-gray-700">Wall / Post Mounted</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 )}
+              </div>
 
-                {product?.acf?.features && (
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                      <span className="w-2 h-2 bg-[#2B4257] rounded-full mr-3"></span>
-                      Features
-                    </h3>
-                    <div className="text-gray-700 prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: product.acf.features }} />
-                  </div>
-                )}
+              {/* Quick Facts */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-gray-900 mb-1">Material</h4>
+                  <p className="text-gray-600">Premium Stainless Steel</p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-gray-900 mb-1">Warranty</h4>
+                  <p className="text-gray-600">2 Years</p>
+                </div>
+              </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 mb-1">Material</h4>
-                    <p className="text-gray-600">Premium Stainless Steel</p>
-                  </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 mb-1">Warranty</h4>
-                    <p className="text-gray-600">2 Years</p>
-                  </div>
+              {/* Finishes */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
+                  <span className="w-2 h-2 bg-[#2B4257] rounded-full mr-3"></span>
+                  Available Finishes
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {['Satin', 'Mirror', 'Matte Black', 'PVD Gold'].map((f) => (
+                    <span key={f} className="px-3 py-1 rounded-full bg-gray-100 text-gray-800 text-sm border">{f}</span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Downloads */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
+                  <span className="w-2 h-2 bg-[#2B4257] rounded-full mr-3"></span>
+                  Downloads
+                </h3>
+                <div className="flex items-center gap-3 text-sm">
+                  <button className="px-4 py-2 rounded-lg border text-gray-700 hover:bg-gray-50" disabled>
+                    Spec Sheet (PDF) — Coming Soon
+                  </button>
+                  {/* <button className="px-4 py-2 rounded-lg border text-gray-700 hover:bg-gray-50" disabled>
+                    Installation Guide — Coming Soon
+                  </button> */}
+                </div>
+              </div>
+
+              {/* FAQ - simple accordion */}
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
+                  <span className="w-2 h-2 bg-[#2B4257] rounded-full mr-3"></span>
+                  FAQs
+                </h3>
+                <div className="space-y-2">
+                  <details className="group bg-gray-50 rounded-lg p-4">
+                    <summary className="cursor-pointer font-medium text-gray-900">Is this suitable for outdoor use?</summary>
+                    <p className="mt-2 text-gray-700">Yes, with Grade 316 stainless steel and proper maintenance, it's suitable for coastal/outdoor environments.</p>
+                  </details>
+                  <details className="group bg-gray-50 rounded-lg p-4">
+                    <summary className="cursor-pointer font-medium text-gray-900">Does it include mounting hardware?</summary>
+                    <p className="mt-2 text-gray-700">Mounting hardware availability depends on the package. Please request a custom quote for project-specific kits.</p>
+                  </details>
                 </div>
               </div>
             </div>
