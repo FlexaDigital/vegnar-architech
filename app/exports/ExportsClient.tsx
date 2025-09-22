@@ -1,35 +1,48 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { Globe, Truck, Shield, Award, MapPin, Users, Package, CheckCircle } from 'lucide-react';
+import { motion } from "framer-motion";
+import Image from "next/image";
+import {
+  Globe,
+  Truck,
+  Shield,
+  Award,
+  MapPin,
+  Users,
+  Package,
+  CheckCircle,
+} from "lucide-react";
+import Globe3D from "../../components/Globe3D";
 
 const countries = [
-  { name: 'United States', flag: '🇺🇸' },
-  { name: 'United Kingdom', flag: '🇬🇧' },
-  { name: 'Australia', flag: '🇦🇺' },
-  { name: 'Canada', flag: '🇨🇦' },
-  { name: 'Germany', flag: '🇩🇪' },
-  { name: 'UAE', flag: '🇦🇪' },
-  { name: 'Singapore', flag: '🇸🇬' },
+  { name: "United States", flag: "🇺🇸" },
+  { name: "United Kingdom", flag: "🇬🇧" },
+  { name: "Australia", flag: "🇦🇺" },
+  { name: "Canada", flag: "🇨🇦" },
+  { name: "Germany", flag: "🇩🇪" },
+  { name: "UAE", flag: "🇦🇪" },
+  { name: "Singapore", flag: "🇸🇬" },
 ];
 
 const exportProducts = [
   {
-    name: 'Door Handles & Window Hinges Export to USA',
-    description: 'Premium door handles and window hinges export to USA, UK with DDP service',
-    image: '/Images/Gallary/railing-1-lg.jpg'
+    name: "Door Handles & Window Hinges Export to USA",
+    description:
+      "Premium door handles and window hinges export to USA, UK with DDP service",
+    image: "/Images/Gallary/railing-1-lg.jpg",
   },
   {
-    name: 'Digital Safes & Glass Fittings Export to Europe',
-    description: 'Digital safes for home and office, glass fittings export to Germany and Europe',
-    image: '/Images/Gallary/Hardware-1.jpg'
+    name: "Digital Safes & Glass Fittings Export to Europe",
+    description:
+      "Digital safes for home and office, glass fittings export to Germany and Europe",
+    image: "/Images/Gallary/Hardware-1.jpg",
   },
   {
-    name: 'Bathroom Accessories Export to UK',
-    description: 'Leading brand bathroom accessories and railing systems export to UK and Europe',
-    image: '/Images/Gallary/glass-fitting-1.jpg'
-  }
+    name: "Bathroom Accessories Export to UK",
+    description:
+      "Leading brand bathroom accessories and railing systems export to UK and Europe",
+    image: "/Images/Gallary/glass-fitting-1.jpg",
+  },
 ];
 
 export default function ExportsClient() {
@@ -49,7 +62,10 @@ export default function ExportsClient() {
               Architectural Hardware Exporters in India
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
-              Vegnar Architectural - Leading architectural hardware exporters from India delivering premium furniture fittings, bathroom accessories, pull handles, and mortice locks with DDP export service to global markets.
+              Vegnar Architectural - Leading architectural hardware exporters
+              from India delivering premium furniture fittings, bathroom
+              accessories, pull handles, and mortice locks with DDP export
+              service to global markets.
             </p>
             <div className="flex flex-wrap justify-center gap-8 text-center">
               <div>
@@ -74,18 +90,37 @@ export default function ExportsClient() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Export Capabilities</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Our Export Capabilities
+            </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              From design to delivery, we ensure seamless international shipping with quality assurance at every step.
+              From design to delivery, we ensure seamless international shipping
+              with quality assurance at every step.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: Package, title: 'Custom Packaging', desc: 'Secure packaging for international shipping' },
-              { icon: Shield, title: 'Quality Assurance', desc: 'ISO certified manufacturing processes' },
-              { icon: Truck, title: 'Global Logistics', desc: 'Worldwide shipping and delivery' },
-              { icon: Award, title: 'Export Compliance', desc: 'All international standards met' }
+              {
+                icon: Package,
+                title: "Custom Packaging",
+                desc: "Secure packaging for international shipping",
+              },
+              {
+                icon: Shield,
+                title: "Quality Assurance",
+                desc: "ISO certified manufacturing processes",
+              },
+              {
+                icon: Truck,
+                title: "Global Logistics",
+                desc: "Worldwide shipping and delivery",
+              },
+              {
+                icon: Award,
+                title: "Export Compliance",
+                desc: "All international standards met",
+              },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -104,7 +139,7 @@ export default function ExportsClient() {
       </div>
 
       {/* Countries We Export To */}
-      <div className="py-16 bg-gray-50">
+      {/* <div className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -134,46 +169,28 @@ export default function ExportsClient() {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
 
-      {/* Export Products */}
-      <div className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Interactive Globe */}
+      <div className="py-8 md:py-16 bg-white">
+        <div className="w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-6 md:mb-12 px-4 sm:px-6 lg:px-8"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Leading Brand in Architectural Hardware Products Export</h2>
-            <p className="text-lg text-gray-600">
-              As a leading brand in architectural hardware products, we export premium door handles, window hinges, glass fittings, digital safes, railing systems, and bathroom accessories to USA, UK, Germany, and Europe
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              Global Export Network
+            </h2>
+            <p className="text-base md:text-lg text-gray-600">
+              Explore our worldwide export destinations and manufacturing hub on
+              the interactive globe
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {exportProducts.map((product, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-              >
-                <div className="relative h-48">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-                  <p className="text-gray-600">{product.description}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="px-2 md:px-0">
+            <Globe3D />
           </div>
         </div>
       </div>
@@ -187,20 +204,25 @@ export default function ExportsClient() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4">Leading Brand in Architectural Hardware Export to USA & Europe</h2>
+            <h2 className="text-3xl font-bold mb-4">
+              Leading Brand in Architectural Hardware Export to USA & Europe
+            </h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              We are a leading brand in architectural hardware products, combining Indian manufacturing excellence with international quality standards for door handles, window hinges, glass fittings, and digital safes export to USA, UK, Germany, and Europe
+              We are a leading brand in architectural hardware products,
+              combining Indian manufacturing excellence with international
+              quality standards for door handles, window hinges, glass fittings,
+              and digital safes export to USA, UK, Germany, and Europe
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              'ISO 9001:2015 Certified Manufacturing',
-              'Competitive Export Pricing',
-              'Custom Design Capabilities',
-              'Timely International Delivery',
-              'Comprehensive Export Documentation',
-              '24/7 Customer Support'
+              "ISO 9001:2015 Certified Manufacturing",
+              "Competitive Export Pricing",
+              "Custom Design Capabilities",
+              "Timely International Delivery",
+              "Comprehensive Export Documentation",
+              "24/7 Customer Support",
             ].map((feature, index) => (
               <motion.div
                 key={index}
@@ -225,9 +247,12 @@ export default function ExportsClient() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Export Worldwide?</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Ready to Export Worldwide?
+            </h2>
             <p className="text-lg text-gray-600 mb-8">
-              Contact our export team to discuss your international project requirements
+              Contact our export team to discuss your international project
+              requirements
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
