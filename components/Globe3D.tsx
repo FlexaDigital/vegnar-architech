@@ -239,40 +239,7 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
           el.style.pointerEvents = "auto";
           el.style.cursor = "pointer";
           el.addEventListener("mouseenter", () => {
-            el.style.transform = "scale(1.1)";
-          });
-          el.addEventListener("mouseleave", () => {
-            el.style.transform = "scale(1)";
-          });
-
-          return el;
-        }}
-        htmlAltitude={0.01}
-        onHtmlElementClick={(element: any) => setSelectedItem(element)}
-      />
-
-      {/* Info Panel */}
-      {selectedItem && (
-        <div className="absolute top-4 right-4 bg-black/90 text-white p-4 rounded-lg max-w-xs backdrop-blur-sm">
-          <button
-            onClick={() => setSelectedItem(null)}
-            className="absolute top-2 right-2 text-gray-400 hover:text-white"
-          >
-            ×
-          </button>
-          <h3 className="text-lg font-bold text-orange-500 mb-2">
-            {selectedItem.name}
-          </h3>
-          <p className="text-sm">
-            {selectedItem.info || selectedItem.description}
-          </p>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default Globe3D;rm = "scale(1.3)";
+            el.style.transform = "scale(1.3)";
           });
           el.addEventListener("mouseleave", () => {
             el.style.transform = "scale(1)";
