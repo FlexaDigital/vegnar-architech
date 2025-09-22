@@ -11,7 +11,11 @@ import TawkToWidget from './components/TawkToWidget';
 import { Toaster } from 'react-hot-toast';
 import Script from 'next/script';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter'
+});
 
 export const metadata: Metadata = {
   title: {
@@ -136,7 +140,7 @@ export default function RootLayout({
         </Script>
       </head>
 
-      <body className={`${inter.className} min-h-screen overflow-auto bg-white`}>
+      <body className={`${inter.variable} font-sans min-h-screen overflow-auto bg-white`}>
         <SectionProvider>
           <Header />
           <main>
