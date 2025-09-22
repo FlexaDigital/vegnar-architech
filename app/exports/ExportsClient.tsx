@@ -53,7 +53,7 @@ export default function ExportsClient() {
             </p>
             <div className="flex flex-wrap justify-center gap-8 text-center">
               <div>
-                <div className="text-3xl font-bold">7+</div>
+                <div className="text-3xl font-bold">25+</div>
                 <div className="text-white/80">Countries</div>
               </div>
               <div>

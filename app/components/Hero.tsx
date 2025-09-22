@@ -25,7 +25,7 @@ export default function Hero() {
         >
           <span className="block mb-2">Premium Architectural Hardware</span>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-white/80 to-white">
-            & Bathroom Accessories
+            & Railing Systems
           </span>
         </motion.h1>
 
