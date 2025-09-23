@@ -14,6 +14,72 @@ const exportCountriesData = [
   { name: "Singapore", lat: 1.3521, lng: 103.8198 },
 ];
 
+// const architecturalLandmarks = [
+//   {
+//     name: "Eiffel Tower",
+//     lat: 48.8584,
+//     lng: 2.2945,
+//     description:
+//       "Iconic iron lattice tower in Paris, France. A masterpiece of architectural engineering.",
+//     style: "landmark",
+//   },
+//   {
+//     name: "Statue of Liberty",
+//     lat: 40.6892,
+//     lng: -74.0445,
+//     description:
+//       "Symbol of freedom in New York Harbor, USA. Represents democratic ideals through architecture.",
+//     style: "landmark",
+//   },
+//   {
+//     name: "Sydney Opera House",
+//     lat: -33.8568,
+//     lng: 151.2153,
+//     description:
+//       "Sailing ship-inspired performing arts venue in Sydney, Australia.",
+//     style: "landmark",
+//   },
+//   {
+//     name: "Big Ben",
+//     lat: 51.5007,
+//     lng: -0.1246,
+//     description:
+//       "Famous clock tower at the Palace of Westminster in London, UK.",
+//     style: "landmark",
+//   },
+//   {
+//     name: "Burj Khalifa",
+//     lat: 25.1972,
+//     lng: 55.2744,
+//     description:
+//       "World's tallest building in Dubai, UAE. Modern architectural marvel.",
+//     style: "landmark",
+//   },
+//   {
+//     name: "Marina Bay Sands",
+//     lat: 1.2834,
+//     lng: 103.8607,
+//     description:
+//       "Integrated resort with distinctive sail-shaped design in Singapore.",
+//     style: "landmark",
+//   },
+//   {
+//     name: "Brandenburg Gate",
+//     lat: 52.5163,
+//     lng: 13.3777,
+//     description:
+//       "Historic monument in Berlin, Germany. Symbol of European unity.",
+//     style: "landmark",
+//   },
+//   {
+//     name: "CN Tower",
+//     lat: 43.6426,
+//     lng: -79.3871,
+//     description: "Communications and observation tower in Toronto, Canada.",
+//     style: "landmark",
+//   },
+// ];
+
 const sampleData = {
   countries: [
     {
@@ -38,6 +104,7 @@ const sampleData = {
       logo: "/vegnar-architectural-logo.png",
       info: "B-623 RK Iconic, Shital Park, Rajkot, Gujarat 360001, India - Main headquarters and manufacturing facility.",
       isHQ: true,
+      style: "hq",
     },
     ...exportCountriesData.map((country) => ({
       lat: country.lat,
@@ -46,6 +113,17 @@ const sampleData = {
       logo: "/vegnar-architectural-logo.png",
       info: `Export market - Vegnar Architectural supplies premium hardware to ${country.name}`,
       isHQ: false,
+      style: "export",
+    })),
+  ],
+  arcs: [
+    // Arcs from HQ to export markets
+    ...exportCountriesData.map((country) => ({
+      startLat: 22.3193,
+      startLng: 70.7922,
+      endLat: country.lat,
+      endLng: country.lng,
+      color: "#4A90E2",
     })),
   ],
 };
@@ -125,13 +203,33 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
 
   return (
     <div className="relative w-full h-[400px] md:h-[600px] bg-gradient-to-r from-gray-900 to-black overflow-hidden">
+      {/* Title */}
+      <div className="absolute top-4 left-4 z-10 text-white">
+        <h2 className="text-lg md:text-xl font-bold mb-1">
+          Vegnar Architectural
+        </h2>
+        <p className="text-sm md:text-base opacity-90">
+          Global Presence & Architectural Inspiration
+        </p>
+        <div className="flex items-center mt-2 space-x-4 text-xs md:text-sm">
+          <div className="flex items-center">
+            <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+            <span>Export Markets</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+            <span>Architectural Landmarks</span>
+          </div>
+        </div>
+      </div>
+
       <Globe
         ref={globeRef}
         width={width}
         height={height}
         backgroundColor="rgba(0,0,0,0)"
         backgroundImageUrl="https://unpkg.com/three-globe/example/img/night-sky.png"
-        globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+        globeImageUrl="https://unpkg.com/three-globe/example/img/earth-night.jpg"
         bumpImageUrl="https://unpkg.com/three-globe/example/img/earth-topology.png"
         showAtmosphere={true}
         atmosphereColor="#87CEEB"
@@ -145,15 +243,15 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
         polygonsData={sampleData.countries}
         polygonCapColor={(d: any) =>
           d.name === "India"
-            ? "rgba(255, 107, 53, 0.8)"
-            : "rgba(255, 107, 53, 0.4)"
+            ? "rgba(74, 144, 226, 0.8)"
+            : "rgba(74, 144, 226, 0.4)"
         }
         polygonSideColor={(d: any) =>
           d.name === "India"
-            ? "rgba(255, 107, 53, 0.3)"
-            : "rgba(255, 107, 53, 0.15)"
+            ? "rgba(74, 144, 226, 0.3)"
+            : "rgba(74, 144, 226, 0.15)"
         }
-        polygonStrokeColor={() => "#FF6B35"}
+        polygonStrokeColor={() => "#4A90E2"}
         polygonAltitude={(d: any) => (d.name === "India" ? 0.025 : 0.015)}
         polygonLabel={(d: any) => {
           const isMobile =
@@ -164,7 +262,7 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
             }; border-radius: 8px; max-width: ${
             isMobile ? "200px" : "250px"
           }; backdrop-filter: blur(10px);">
-              <h3 style="margin: 0 0 6px 0; color: #FF6B35; font-size: ${
+              <h3 style="margin: 0 0 6px 0; color: #4A90E2; font-size: ${
                 isMobile ? "14px" : "16px"
               }; font-weight: bold;">${d.name}</h3>
               <p style="margin: 0 0 4px 0; font-size: ${
@@ -177,29 +275,34 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
           `;
         }}
         onPolygonClick={(polygon: any) => setSelectedItem(polygon)}
+        // Arcs data
+        arcsData={sampleData.arcs}
+        arcColor={(d: any) => d.color}
+        arcDashLength={0.4}
+        arcDashGap={0.2}
+        arcDashAnimateTime={2000}
+        arcStroke={0.5}
         // Markers data
         htmlElementsData={sampleData.markers}
         htmlElement={(d: any) => {
           const el = document.createElement("div");
           const isMobile =
             typeof window !== "undefined" && window.innerWidth < 768;
-          const size = d.isHQ ? (isMobile ? 32 : 40) : isMobile ? 16 : 20;
-          const borderColor = d.isHQ ? "#FF6B35" : "#FFA500";
-          const bgColor = d.isHQ ? "white" : "#FF6B35";
 
-          if (d.isHQ) {
+          if (d.style === "hq") {
+            const size = isMobile ? 32 : 40;
             el.innerHTML = `
               <div style="
-                width: ${size}px; 
-                height: ${size}px; 
-                background: ${bgColor}; 
-                border: 3px solid ${borderColor}; 
-                border-radius: 50%; 
-                display: flex; 
-                align-items: center; 
+                width: ${size}px;
+                height: ${size}px;
+                background: white;
+                border: 3px solid #4A90E2;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
                 justify-content: center;
                 cursor: pointer;
-                box-shadow: 0 4px 12px rgba(255, 107, 53, 0.6);
+                box-shadow: 0 4px 12px rgba(74, 144, 226, 0.6);
                 transition: transform 0.2s;
               ">
                 <img src="${d.logo}" alt="Logo" style="width: ${
@@ -207,16 +310,17 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
             }px; height: ${size - 12}px; object-fit: contain;" />
               </div>
             `;
-          } else {
+          } else if (d.style === "export") {
+            const size = isMobile ? 16 : 20;
             el.innerHTML = `
               <div style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
                 <div style="
-                  width: ${size}px; 
-                  height: ${size}px; 
-                  background: ${bgColor}; 
-                  border: 2px solid white; 
-                  border-radius: 50%; 
-                  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+                  width: ${size}px;
+                  height: ${size}px;
+                  background: #4A90E2;
+                  border: 2px solid white;
+                  border-radius: 50%;
+                  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.4);
                   transition: transform 0.2s;
                 ">
                 </div>
@@ -229,6 +333,39 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
                   text-align: center;
                   white-space: nowrap;
                   max-width: 80px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                ">${d.name}</div>
+              </div>
+            `;
+          } else if (d.style === "landmark") {
+            const size = isMobile ? 20 : 24;
+            el.innerHTML = `
+              <div style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
+                <div style="
+                  width: ${size}px;
+                  height: ${size}px;
+                  background: #4A90E2;
+                  border: 2px solid white;
+                  border-radius: 4px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.4);
+                  transition: transform 0.2s;
+                  font-size: ${size - 8}px;
+                  color: white;
+                  font-weight: bold;
+                ">🏗️</div>
+                <div style="
+                  color: #4A90E2;
+                  font-size: ${isMobile ? "8px" : "10px"};
+                  font-weight: bold;
+                  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+                  margin-top: 2px;
+                  text-align: center;
+                  white-space: nowrap;
+                  max-width: 60px;
                   overflow: hidden;
                   text-overflow: ellipsis;
                 ">${d.name}</div>
@@ -273,7 +410,7 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
 
             {selectedItem.projects && (
               <div className="mb-4">
-                <p className="text-base md:text-lg font-semibold text-orange-600 mb-2">
+                <p className="text-base md:text-lg font-semibold text-blue-600 mb-2">
                   {selectedItem.projects}
                 </p>
                 <p className="text-sm md:text-base text-gray-600">
@@ -300,9 +437,27 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
               </div>
             )}
 
+            {/* {selectedItem.style === "landmark" && (
+              <div className="mb-4">
+                <div className="flex items-center mb-3">
+                  <span className="text-2xl mr-3">🏗️</span>
+                  <span className="font-semibold text-blue-600 text-lg md:text-xl">
+                    Architectural Landmark
+                  </span>
+                </div>
+                <p className="text-sm md:text-base text-gray-600">
+                  {selectedItem.description}
+                </p>
+                <p className="text-xs md:text-sm text-gray-500 mt-2">
+                  Vegnar Architectural hardware can be used in modern
+                  architectural projects inspired by such landmarks.
+                </p>
+              </div>
+            )} */}
+
             <button
               onClick={() => setSelectedItem(null)}
-              className="w-full bg-orange-600 text-white py-2 px-4 rounded-lg hover:bg-orange-700 transition-colors text-sm md:text-base"
+              className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors text-sm md:text-base"
             >
               Close
             </button>
