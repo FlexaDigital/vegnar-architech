@@ -130,7 +130,9 @@ export default function ExportsClient() {
                 className="text-center p-6 bg-gray-50 rounded-lg"
               >
                 <item.icon className="w-12 h-12 mx-auto mb-4 text-[#2B4257]" />
-                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                <h3 className="text-lg font-semibold mb-2 text-gray-600">
+                  {item.title}
+                </h3>
                 <p className="text-gray-600">{item.desc}</p>
               </motion.div>
             ))}
