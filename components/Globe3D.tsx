@@ -182,7 +182,7 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
 
   if (!Globe) {
     return (
-      <div className="w-full h-[400px] md:h-[600px] bg-gradient-to-r from-gray-900 to-black rounded-2xl flex items-center justify-center">
+      <div className="w-full h-[500px] md:h-[800px] bg-gradient-to-r from-gray-900 to-black rounded-2xl flex items-center justify-center">
         <div className="text-white text-lg md:text-xl">
           Loading Interactive Globe...
         </div>
@@ -191,10 +191,10 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
   }
 
   const getGlobeSize = () => {
-    if (typeof window === "undefined") return { width: 1200, height: 600 };
+    if (typeof window === "undefined") return { width: 1400, height: 800 };
     const isMobile = window.innerWidth < 768;
-    const width = Math.min(window.innerWidth, 1200);
-    const height = isMobile ? 400 : 600;
+    const width = Math.min(window.innerWidth, 1400);
+    const height = isMobile ? 500 : 800;
     return { width, height };
   };
 
@@ -202,7 +202,28 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   return (
-    <div className="relative w-full h-[400px] md:h-[600px] bg-gradient-to-r from-gray-900 to-black overflow-hidden">
+    <div className="relative w-full h-[500px] md:h-[800px] bg-gradient-to-r from-gray-900 to-black overflow-hidden">
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+          @keyframes flyAcross {
+            0% { left: -10%; top: 20%; }
+            100% { left: 110%; top: 10%; }
+          }
+          .airplane {
+            animation: flyAcross 12s ease-in-out infinite;
+            width: 500px;
+            height: 500px;
+          }
+          .airplane img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(74, 144, 226, 0.3));
+          }
+        `,
+        }}
+      />
       {/* Title */}
       <div className="absolute top-4 left-4 z-10 text-white">
         <h2 className="text-lg md:text-xl font-bold mb-1">
@@ -229,11 +250,11 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
         height={height}
         backgroundColor="rgba(0,0,0,0)"
         backgroundImageUrl="https://unpkg.com/three-globe/example/img/night-sky.png"
-        globeImageUrl="https://unpkg.com/three-globe/example/img/earth-night.jpg"
+        globeImageUrl="https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
         bumpImageUrl="https://unpkg.com/three-globe/example/img/earth-topology.png"
         showAtmosphere={true}
-        atmosphereColor="#87CEEB"
-        atmosphereAltitude={0.25}
+        atmosphereColor="#00BFFF"
+        atmosphereAltitude={0.3}
         rendererConfig={{
           antialias: !isMobile,
           alpha: true,
@@ -241,17 +262,49 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
         }}
         // Countries data
         polygonsData={sampleData.countries}
-        polygonCapColor={(d: any) =>
-          d.name === "India"
-            ? "rgba(74, 144, 226, 0.8)"
-            : "rgba(74, 144, 226, 0.4)"
-        }
-        polygonSideColor={(d: any) =>
-          d.name === "India"
-            ? "rgba(74, 144, 226, 0.3)"
-            : "rgba(74, 144, 226, 0.15)"
-        }
-        polygonStrokeColor={() => "#4A90E2"}
+        polygonCapColor={(d: any) => {
+          const colors = {
+            India: "rgba(255, 140, 0, 0.9)",
+            "United States": "rgba(255, 69, 0, 0.7)",
+            "United Kingdom": "rgba(138, 43, 226, 0.7)",
+            Australia: "rgba(50, 205, 50, 0.7)",
+            Canada: "rgba(220, 20, 60, 0.7)",
+            Germany: "rgba(255, 215, 0, 0.7)",
+            UAE: "rgba(0, 191, 255, 0.7)",
+            Singapore: "rgba(255, 20, 147, 0.7)",
+          };
+          return (
+            colors[d.name as keyof typeof colors] || "rgba(74, 144, 226, 0.4)"
+          );
+        }}
+        polygonSideColor={(d: any) => {
+          const colors = {
+            India: "rgba(255, 140, 0, 0.4)",
+            "United States": "rgba(255, 69, 0, 0.3)",
+            "United Kingdom": "rgba(138, 43, 226, 0.3)",
+            Australia: "rgba(50, 205, 50, 0.3)",
+            Canada: "rgba(220, 20, 60, 0.3)",
+            Germany: "rgba(255, 215, 0, 0.3)",
+            UAE: "rgba(0, 191, 255, 0.3)",
+            Singapore: "rgba(255, 20, 147, 0.3)",
+          };
+          return (
+            colors[d.name as keyof typeof colors] || "rgba(74, 144, 226, 0.15)"
+          );
+        }}
+        polygonStrokeColor={(d: any) => {
+          const colors = {
+            India: "#FF8C00",
+            "United States": "#FF4500",
+            "United Kingdom": "#8A2BE2",
+            Australia: "#32CD32",
+            Canada: "#DC143C",
+            Germany: "#FFD700",
+            UAE: "#00BFFF",
+            Singapore: "#FF1493",
+          };
+          return colors[d.name as keyof typeof colors] || "#4A90E2";
+        }}
         polygonAltitude={(d: any) => (d.name === "India" ? 0.025 : 0.015)}
         polygonLabel={(d: any) => {
           const isMobile =
@@ -276,12 +329,23 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
         }}
         onPolygonClick={(polygon: any) => setSelectedItem(polygon)}
         // Arcs data
-        arcsData={sampleData.arcs}
+        arcsData={sampleData.arcs.map((arc, index) => ({
+          ...arc,
+          color: [
+            "#FF6B6B",
+            "#4ECDC4",
+            "#45B7D1",
+            "#96CEB4",
+            "#FFEAA7",
+            "#DDA0DD",
+            "#98D8C8",
+          ][index % 7],
+        }))}
         arcColor={(d: any) => d.color}
         arcDashLength={0.4}
         arcDashGap={0.2}
         arcDashAnimateTime={2000}
-        arcStroke={0.5}
+        arcStroke={0.8}
         // Markers data
         htmlElementsData={sampleData.markers}
         htmlElement={(d: any) => {
@@ -290,42 +354,62 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
             typeof window !== "undefined" && window.innerWidth < 768;
 
           if (d.style === "hq") {
-            const size = isMobile ? 32 : 40;
+            const size = isMobile ? 48 : 60;
             el.innerHTML = `
               <div style="
                 width: ${size}px;
                 height: ${size}px;
-                background: white;
-                border: 3px solid #4A90E2;
+                background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+                border: 4px solid #FFD700;
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
-                box-shadow: 0 4px 12px rgba(74, 144, 226, 0.6);
+                box-shadow: 0 6px 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 107, 107, 0.6);
                 transition: transform 0.2s;
+                animation: pulse 2s infinite;
               ">
-                <img src="${d.logo}" alt="Logo" style="width: ${
-              size - 12
-            }px; height: ${size - 12}px; object-fit: contain;" />
+                <img src="${d.logo}" alt="Vegnar Logo" style="width: ${
+              size - 16
+            }px; height: ${size - 16}px; object-fit: contain;" />
               </div>
+              <style>
+                @keyframes pulse {
+                  0% { box-shadow: 0 6px 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 107, 107, 0.6); }
+                  50% { box-shadow: 0 6px 25px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 107, 107, 0.8); }
+                  100% { box-shadow: 0 6px 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 107, 107, 0.6); }
+                }
+              </style>
             `;
           } else if (d.style === "export") {
             const size = isMobile ? 16 : 20;
+            const colors = {
+              "United States": "#FF4500",
+              "United Kingdom": "#8A2BE2",
+              Australia: "#32CD32",
+              Canada: "#DC143C",
+              Germany: "#FFD700",
+              UAE: "#00BFFF",
+              Singapore: "#FF1493",
+            };
+            const markerColor =
+              colors[d.name as keyof typeof colors] || "#4A90E2";
             el.innerHTML = `
               <div style="display: flex; flex-direction: column; align-items: center; cursor: pointer;">
                 <div style="
                   width: ${size}px;
                   height: ${size}px;
-                  background: #4A90E2;
+                  background: linear-gradient(45deg, ${markerColor}, ${markerColor}AA);
                   border: 2px solid white;
                   border-radius: 50%;
-                  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.4);
+                  box-shadow: 0 2px 8px ${markerColor}66, 0 0 15px ${markerColor}44;
                   transition: transform 0.2s;
+                  animation: glow 3s ease-in-out infinite alternate;
                 ">
                 </div>
                 <div style="
-                  color: white;
+                  color: ${markerColor};
                   font-size: ${isMobile ? "10px" : "12px"};
                   font-weight: bold;
                   text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
@@ -337,6 +421,12 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
                   text-overflow: ellipsis;
                 ">${d.name}</div>
               </div>
+              <style>
+                @keyframes glow {
+                  from { box-shadow: 0 2px 8px ${markerColor}66, 0 0 15px ${markerColor}44; }
+                  to { box-shadow: 0 2px 12px ${markerColor}88, 0 0 25px ${markerColor}66; }
+                }
+              </style>
             `;
           } else if (d.style === "landmark") {
             const size = isMobile ? 20 : 24;
@@ -464,6 +554,11 @@ const Globe3D: React.FC<GlobeProps> = ({ rotationSpeed = 0.5 }) => {
           </div>
         </div>
       )}
+
+      {/* Flying Airplane */}
+      {/* <div className="airplane absolute top-1/2 left-0 z-5">
+        <img src="/vegnar-plane.png" alt="Vegnar Plane" />
+      </div> */}
     </div>
   );
 };
