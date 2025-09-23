@@ -49,6 +49,12 @@
 
   <!-- Blog Posts -->
   <url>
+    <loc>https://vegnararch.com/insights/lightweight-glass-fitting-hardware</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://vegnararch.com/insights/side-mounted-system-for-alu</loc>
     <lastmod>2025-09-10</lastmod>
     <changefreq>weekly</changefreq>
