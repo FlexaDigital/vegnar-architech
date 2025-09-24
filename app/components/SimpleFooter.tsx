@@ -1,45 +1,44 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useState } from 'react';
+import Link from "next/link";
+import { useState } from "react";
 import {
   FaLinkedin,
   FaTwitter,
   FaInstagram,
   FaPinterest,
   FaFacebook,
-} from 'react-icons/fa';
+} from "react-icons/fa";
 
 const socialLinks = [
   {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/vegnar-architectural-products/',
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/company/vegnar-architectural-products/",
     icon: <FaLinkedin className="w-6 h-6" />,
   },
   {
-    name: 'Instagram',
-    href: 'https://www.instagram.com/vegnar_india/',
+    name: "Instagram",
+    href: "https://www.instagram.com/vegnar_india/",
     icon: <FaInstagram className="w-6 h-6" />,
   },
   {
-    name: 'Pinterest',
-    href: 'https://pin.it/4vJbQFaLC',
+    name: "Pinterest",
+    href: "https://pin.it/4vJbQFaLC",
     icon: <FaPinterest className="w-6 h-6" />,
   },
   {
-    name: 'Facebook',
-    href: 'https://www.facebook.com/share/1BziGytwxh/',
+    name: "Facebook",
+    href: "https://www.facebook.com/share/1BziGytwxh/",
     icon: <FaFacebook className="w-6 h-6" />,
   },
 ];
 
-
 export default function SimpleFooter() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const handleSubscribe = () => {
     alert(`Subscribed with: ${email}`);
-    setEmail('');
+    setEmail("");
   };
 
   return (
@@ -57,11 +56,16 @@ export default function SimpleFooter() {
               />
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
-              Leading provider of premium architectural hardware solutions, transforming spaces with innovation and excellence since 2003.
+              Leading provider of premium architectural hardware solutions,
+              transforming spaces with innovation and excellence since 2003.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((item) => (
-                <a key={item.name} href={item.href} className="text-gray-400 hover:text-white">
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-400 hover:text-white"
+                >
                   <span className="sr-only">{item.name}</span>
                   {item.icon}
                 </a>
@@ -73,10 +77,32 @@ export default function SimpleFooter() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-3">
-              <li><Link href="/" className="text-gray-400 hover:text-white">Home</Link></li>
-              <li><Link href="/products" className="text-gray-400 hover:text-white">Products</Link></li>
-              <li><Link href="/about" className="text-gray-400 hover:text-white">About</Link></li>
-              <li><Link href="/exports" className="text-gray-400 hover:text-white">Exports</Link></li>
+              <li>
+                <Link href="/" className="text-gray-400 hover:text-white">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/products"
+                  className="text-gray-400 hover:text-white"
+                >
+                  Products
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-gray-400 hover:text-white">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/exports"
+                  className="text-gray-400 hover:text-white"
+                >
+                  Exports
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -84,17 +110,87 @@ export default function SimpleFooter() {
           <div>
             <h3 className="text-lg font-semibold mb-4">More</h3>
             <ul className="space-y-3">
-              <li><Link href="/partner" className="text-gray-400 hover:text-white">Partner</Link></li>
-              <li><Link href="/insights" className="text-gray-400 hover:text-white">Insights</Link></li>
-              <li><Link href="/contact" className="text-gray-400 hover:text-white">Contact</Link></li>
-              <li><Link href="/catalogs" className="text-gray-400 hover:text-white">E-Catalog</Link></li>
+              <li>
+                <Link
+                  href="/partner"
+                  className="text-gray-400 hover:text-white"
+                >
+                  Partner
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/insights"
+                  className="text-gray-400 hover:text-white"
+                >
+                  Insights
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-gray-400 hover:text-white"
+                >
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/catalogs"
+                  className="text-gray-400 hover:text-white"
+                >
+                  E-Catalog
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Subscribe */}
+          {/* Certifications + Subscribe */}
           <div>
+            {/* Certifications */}
+            <div className="mb-8">
+              <h3 className="text-lg font-semibold mb-4 text-white">
+                Certifications
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {/* ISO QOOL */}
+                <div className="group bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 rounded-lg px-3 py-2 transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer">
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs group-hover:bg-blue-700 transition-colors">
+                      ISO
+                    </div>
+                    <div className="text-gray-900 font-bold text-sm">
+                      ISO 9001
+                    </div>
+                  </div>
+                </div>
+
+                {/* CE */}
+                <div className="group bg-gradient-to-r from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 rounded-lg px-3 py-2 transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer">
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xs group-hover:bg-green-700 transition-colors">
+                      CE
+                    </div>
+                    <div className="text-gray-900 font-bold text-sm">CE</div>
+                  </div>
+                </div>
+
+                {/* IES */}
+                <div className="group bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 rounded-lg px-3 py-2 transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer">
+                  <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xs group-hover:bg-purple-700 transition-colors">
+                      IES
+                    </div>
+                    <div className="text-gray-900 font-bold text-sm">IES</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <h3 className="text-lg font-semibold mb-4">Subscribe</h3>
-            <p className="text-gray-400 mb-3 text-sm">Get updates on our latest products and offers.</p>
+            <p className="text-gray-400 mb-3 text-sm">
+              Get updates on our latest products and offers.
+            </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="email"
@@ -117,9 +213,12 @@ export default function SimpleFooter() {
       {/* Bottom Footer */}
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-          <p>© {new Date().getFullYear()} Vegnar Architectural. All rights reserved.</p>
           <p>
-            Developed by{' '}
+            © {new Date().getFullYear()} Vegnar Architectural. All rights
+            reserved.
+          </p>
+          <p>
+            Developed by{" "}
             <a
               href="https://flexadigital.com"
               target="_blank"
