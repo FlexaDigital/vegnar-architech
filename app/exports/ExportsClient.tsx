@@ -267,7 +267,7 @@ export default function ExportsClient() {
                 href="mailto:exports@vegnar.com"
                 className="border border-[#2B4257] text-[#2B4257] px-8 py-3 rounded-lg font-semibold hover:bg-[#2B4257] hover:text-white transition-colors"
               >
-                exports@vegnar.com
+                sales@vegnar.com
               </a>
             </div>
           </motion.div>

@@ -154,7 +154,15 @@ export default function SimpleFooter() {
               </h3>
               <div className="flex flex-wrap gap-2">
                 {/* ISO QOOL */}
-                <div className="group bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 rounded-lg px-3 py-2 transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer">
+                <div
+                  onClick={() =>
+                    window.open(
+                      "https://drive.google.com/file/d/1YnvPqMOryrTJzovo7yT9MjZdzmKV6l16/view?usp=sharing",
+                      "_blank"
+                    )
+                  }
+                  className="group bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 rounded-lg px-3 py-2 transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer"
+                >
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs group-hover:bg-blue-700 transition-colors">
                       ISO
@@ -166,7 +174,15 @@ export default function SimpleFooter() {
                 </div>
 
                 {/* CE */}
-                <div className="group bg-gradient-to-r from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 rounded-lg px-3 py-2 transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer">
+                <div
+                  onClick={() =>
+                    window.open(
+                      "https://drive.google.com/file/d/1Cp95C2wRgPcpCdn236Nz6UJDD9bSUItb/view?usp=sharing",
+                      "_blank"
+                    )
+                  }
+                  className="group bg-gradient-to-r from-green-50 to-green-100 hover:from-green-100 hover:to-green-200 rounded-lg px-3 py-2 transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer"
+                >
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xs group-hover:bg-green-700 transition-colors">
                       CE
@@ -176,7 +192,15 @@ export default function SimpleFooter() {
                 </div>
 
                 {/* IES */}
-                <div className="group bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 rounded-lg px-3 py-2 transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer">
+                <div
+                  onClick={() =>
+                    window.open(
+                      "https://drive.google.com/file/d/11LTRdiEG4ksb71RqVGHTXKX0OpT4Tr5k/view?usp=sharing",
+                      "_blank"
+                    )
+                  }
+                  className="group bg-gradient-to-r from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200 rounded-lg px-3 py-2 transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer"
+                >
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xs group-hover:bg-purple-700 transition-colors">
                       IES
