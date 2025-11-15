@@ -40,7 +40,7 @@ function formatPost(post: WordPressPost, categories: WordPressCategory[]) {
     id: post.slug,
     title: cleanTitle,
     excerpt: cleanExcerpt,
-    category: postCategory?.name || 'Insights',
+    category: postCategory?.name.replace(/&amp;/g, '&') || 'Insights',
     readTime: '5 min read',
     date: post.date,
     image: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/Images/Gallary/Hardware-1.jpg',
