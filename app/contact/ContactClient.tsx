@@ -115,6 +115,20 @@ const ContactClient = () => {
         Sunday: Closed
       </p>
     </div>
+
+    {/* USA Office */}
+    <div>
+      <h3 className="text-lg font-semibold text-gray-900 mb-2">USA Office</h3>
+      <p className="text-gray-600">
+        30 N Gould St Ste R<br />
+        Sheridan, WY 82801-6317<br />
+        United States
+      </p>
+      <h3 className="text-lg font-semibold text-gray-900 mt-4 mb-2">Contact Information</h3>
+      <p className="text-gray-600">
+        Email: usa@vegnar.com
+      </p>
+    </div>
   </div>
 </motion.div>
 
