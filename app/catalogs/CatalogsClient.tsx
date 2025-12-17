@@ -15,7 +15,7 @@ const catalogs = [
   {
     title: "Glass Hardware Fittings",
     description: "Specialized catalog for all glass hardware fittings.",
-    fileUrl: "/download/Glass-Hardware-Fittings.pdf",
+    fileUrl: "/download/Glass Fitting Hardware V3.pdf",
     previewImg: "/download/Glass-Hardware-Fittings.jpeg",
   },
   {
